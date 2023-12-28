@@ -1,0 +1,46 @@
+<main class="container">
+    <nav><a routerLink="/add">
+            <button class="ajouterBtn" mat-flat-button color="accent">
+                Ajouter un devoir
+            </button>
+        </a></nav>
+
+
+    <mat-list *ngFor="let assignment of assignments">
+        <nav><a routerLink="/assignment/{{assignment.id}}">
+                <h3 mat-subheader> Date de rendu: {{assignment.dateDeRendu|date}}</h3>
+                <mat-list-item>
+                    <p appRendu *ngIf="assignment.rendu; else nonsoumis">
+                        Devoir intitulé {{assignment.nom}} a été rendu.
+                    </p>
+                    <ng-template #nonsoumis>
+                        <p>Le devoir {{assignment.nom}} n'a pas été rendu.</p>
+                    </ng-template>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+            </a></nav>
+
+
+    </mat-list>
+
+    <!-- <app-assignment-detail [assignmentTransmis]="assignementSelectionne"></app-assignment-detail> -->
+
+</main>
+
+<!-- <app-add-assignment *ngIf="formVisible" 
+                        (nouvelAssignement)="onNouvelAssignement($event)">
+        </app-add-assignment> -->
+<!-- 
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
+ -->
+
+
+
+
+
+
+
+<!-- [ngStyle]="{'color':assignment.rendu?'green':'red'} " 
+[ngClass]="{'rendu':assignment.rendu, 'nonRendu': !assignment.rendu} "  -->
