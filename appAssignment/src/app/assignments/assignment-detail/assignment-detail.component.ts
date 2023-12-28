@@ -29,21 +29,23 @@ export class AssignmentDetailComponent implements OnInit {
       this.assignmentTransmis.rendu=true;
 
       this.assignmentService.updateAssignment(this.assignmentTransmis)
-      .subscribe((message) => console.log(message));
-
+      .subscribe((reponse) => {
+        console.log("Response du serveur: " + reponse.message);
+        this.router.navigate(["home"]);
+      });
       //désactiver le mode strict = false tsconfig.json (=null sinon erreur)
       this.assignmentTransmis = null;
-
-      this.router.navigate(["home"]);
-
     }
   }
   onDelete(){
-    this.assignmentService.deleteAssignment(this.assignmentTransmis)
-      .subscribe((message) => console.log(message));
-    
-      this.assignmentTransmis = null;
+    if(this.assignmentTransmis){
+      this.assignmentService.deleteAssignment(this.assignmentTransmis)
+      .subscribe((reponse) => console.log("Réponse du serveur: " + reponse.message));
       this.router.navigate(["home"]);
+
+    }
+   
+      this.assignmentTransmis = null;
 
   }
 

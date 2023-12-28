@@ -23,20 +23,19 @@ export class AddAssignmentComponent implements OnInit {
   onSubmit(){
     // event.prevenDefault();
     console.log("onSubmit")
-    const newAssignment = new Assignment();
-    newAssignment.id = this.assignmentService.getNewId();
-    newAssignment.nom= this.nomDevoir;
-    newAssignment.dateDeRendu=this.dateRendu;
-    newAssignment.rendu =false;
-    
-    this.assignmentService.addAssignments(newAssignment)
-      .subscribe(message =>{console.log(message)})
-
-    //on navigue la page Acceuil: navigation dynamique
-    this.router.navigate(['home']);
-    //this.nouvelAssignement.emit(newAssignment);
-    // console.log(newAssignment);
-    // this.assignments.push(newAssignment);
+    if(this.nomDevoir && this.dateRendu){
+      let newAssignment = new Assignment();
+      newAssignment.id = Math.floor(Math.random()*1000);
+      newAssignment.nom= this.nomDevoir;
+      newAssignment.dateDeRendu=this.dateRendu;
+      newAssignment.rendu =false;
+      this.assignmentService.addAssignments(newAssignment)
+        .subscribe(reponse =>{
+          console.log(reponse.message);
+        //on navigue la page Acceuil: navigation dynamique
+        this.router.navigate(['home']);
+    });
+      
+    }
   }
-
 }

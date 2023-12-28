@@ -31,14 +31,23 @@ export class EditAssignmentComponent implements OnInit {
       console.log(fragment);
     }
   onSaveAssignment(){
+    if(!this.assignment) return;
+
+    if(this.nom){
       this.assignment.nom = this.nom;
+    }
+    if(this.dateDeRendu){
       this.assignment.dateDeRendu = this.dateDeRendu;
+    }
     
       this.assignmentService.updateAssignment(this.assignment)
-        .subscribe(message => console.log(message));
+        .subscribe(reponse => {
+          console.log("Réponse du serveur" + reponse.message);
+         //retour à la page d'acceuil
+          this.router.navigate(['home']);
+  });
 
-    //retour à la page d'acceuil
-    this.router.navigate(['home'])
+   
   }
 
 }
