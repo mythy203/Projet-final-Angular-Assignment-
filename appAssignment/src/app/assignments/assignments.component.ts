@@ -1,9 +1,12 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit, ViewChild } from '@angular/core';
 import { Assignment } from './assignment.model';
 import { AssignmentsService } from '../shared/assignments.service';
 import { AuthService } from '../shared/auth.service';
 import { Router } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+
 
 @Component({
   selector: 'app-assignments',
@@ -21,27 +24,23 @@ export class AssignmentsComponent implements OnInit {
   assignments!:Assignment[];
   isPeuplementEnCours = false;
 
-  // //Pour gérer la pagination
-  // page: number=1;
-  // limit: number=10;
-  // totalDocs: number;
-  // totalPages: number;
-  // hasPrevPage: boolean;
-  // prevPage: number;
-  // hasNextPage: boolean;
-  // nextPage: number;
-
   // Pagination properties
-  page: number = 1;
-  limit: number = 10;
-  totalDocs: number = 0;
-  totalPages: number = 0;
-  hasPrevPage: boolean = false;
-  prevPage: number = 0;
-  hasNextPage: boolean = false;
-  nextPage: number = 0;
+    page: number = 1;
+    limit: number = 10;
+    totalDocs: number = 0;
+    totalPages: number = 0;
+    hasPrevPage: boolean = false;
+    prevPage: number = 0;
+    hasNextPage: boolean = false;
+    nextPage: number = 0;
 
+  // Colonnes à afficher dans la table
+  columnsToDisplay: string[] = ['nom', 'dateDeRendu', 'rendu'];
 
+  // Récupérez une référence au trieur de la table
+  @ViewChild(MatSort) sort: MatSort;
+
+  dataSource: MatTableDataSource<Assignment>;
 
   constructor(private assignmentService:AssignmentsService,
               private authService:AuthService,
@@ -50,22 +49,10 @@ export class AssignmentsComponent implements OnInit {
   ngOnInit(): void {
     // this.getAssignments();
     this.getAssignmentsPaginated(this.page, this.limit);
-
-    // this.assignmentService.getAssignmentsPagine(this.page, this.limit)
-    // .subscribe(data => {
-    //   this.assignments = data.docs;
-    //   this.page = data.page;
-    //   this.limit = data.limit;
-    //   this.totalDocs = data.totalDocs;
-    //   this.totalPages = data.totalPages;
-    //   this.hasPrevPage = data.hasPrevPage;
-    //   this.prevPage = data.prevPage;
-    //   this.hasNextPage = data.hasNextPage;
-    //   this.nextPage = data.nextPage;
-    //   console.log("données reçues");
-    // });
-
-    
+    // Créez la source de données de table avec vos assignments
+    this.dataSource = new MatTableDataSource(this.assignments);
+    // Triez la table en utilisant le trieur
+    this.dataSource.sort = this.sort;
   }
   getAssignmentsPaginated(page: number, limit: number) {
     this.assignmentService.getAssignmentsPagine(page, limit)
@@ -82,11 +69,43 @@ export class AssignmentsComponent implements OnInit {
       console.log("données reçues");
       });
   }
+  
+  goToFirstPage() {
+    if (this.page > 1) {
+      this.page = 1;
+      this.getAssignmentsPaginated(this.page, this.limit);
+    }
+  }
+
+  goToPrevPage() {
+    if (this.page > 1) {
+      this.page--;
+      this.getAssignmentsPaginated(this.page, this.limit);
+    }
+  }
+
+  goToNextPage() {
+    if (this.page < this.totalPages) {
+      this.page++;
+      this.getAssignmentsPaginated(this.page, this.limit);
+    }
+  }
+
+  goToLastPage() {
+    if (this.page < this.totalPages) {
+      this.page = this.totalPages;
+      this.getAssignmentsPaginated(this.page, this.limit);
+    }
+  }
+
+  // ...
+
   handlePageEvent(event: PageEvent) {
     this.page = event.pageIndex + 1;
     this.limit = event.pageSize;
     this.getAssignmentsPaginated(this.page, this.limit);
   }
+
 
   getAssignments(){
     this.assignmentService.getAssignments()

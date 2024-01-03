@@ -42,6 +42,8 @@ import { LoginComponent } from './assignments/login/login.component';
 
 //pagination
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -90,7 +92,9 @@ const routes: Routes =[
     MatSlideToggleModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule
   ],
   providers: [AssignmentsService],
   bootstrap: [AppComponent]
