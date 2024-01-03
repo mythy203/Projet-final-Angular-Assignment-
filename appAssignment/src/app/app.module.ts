@@ -40,6 +40,10 @@ import { authGuard } from './shared/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './assignments/login/login.component';
 
+//pagination
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+
 
 const routes: Routes =[
   {path:'', component: AssignmentsComponent},
@@ -85,7 +89,8 @@ const routes: Routes =[
     MatCheckboxModule,
     MatSlideToggleModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    MatPaginatorModule
   ],
   providers: [AssignmentsService],
   bootstrap: [AppComponent]

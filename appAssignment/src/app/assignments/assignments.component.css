@@ -29,3 +29,10 @@ mat-sidenav{
 .ajouterBtn{
     align-self: flex-end;
 }
+
+/* Style pour les éléments paginés */
+.mat-paginator {
+    margin: auto;
+    width: 100%; /* ou une autre largeur selon votre design */
+  }
+  

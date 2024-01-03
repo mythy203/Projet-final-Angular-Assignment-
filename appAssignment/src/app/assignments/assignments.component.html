@@ -3,11 +3,19 @@
             <button class="ajouterBtn" mat-flat-button color="accent">
                 Ajouter un devoir
             </button>
+
         </a></nav>
+        <nav>   
+            <button mat-flat-button 
+                    color="primary"
+                    (click)="peuplerBD()" [disabled]="isPeuplementEnCours">Peupler la Base de Données</button>
+
+        </nav>
 
 
     <mat-list *ngFor="let assignment of assignments">
         <nav><a routerLink="/assignment/{{assignment.id}}">
+            <!-- <nav><a [routerLink]="['/assignment', assignment._id]"> -->
                 <h3 mat-subheader> Date de rendu: {{assignment.dateDeRendu|date}}</h3>
                 <mat-list-item>
                     <p appRendu *ngIf="assignment.rendu; else nonsoumis">
@@ -19,28 +27,14 @@
                 </mat-list-item>
                 <mat-divider></mat-divider>
             </a></nav>
-
-
     </mat-list>
-
-    <!-- <app-assignment-detail [assignmentTransmis]="assignementSelectionne"></app-assignment-detail> -->
-
+    <mat-paginator  [length]="totalDocs"
+                    [pageSize]="limit"
+                    [pageSizeOptions]="[5, 10, 20]"
+                    [pageIndex]="page - 1"
+                    (page)="handlePageEvent($event)">
+    </mat-paginator>
 </main>
 
-<!-- <app-add-assignment *ngIf="formVisible" 
-                        (nouvelAssignement)="onNouvelAssignement($event)">
-        </app-add-assignment> -->
-<!-- 
-    </mat-sidenav-content>
-
-</mat-sidenav-container>
- -->
 
 
-
-
-
-
-
-<!-- [ngStyle]="{'color':assignment.rendu?'green':'red'} " 
-[ngClass]="{'rendu':assignment.rendu, 'nonRendu': !assignment.rendu} "  -->

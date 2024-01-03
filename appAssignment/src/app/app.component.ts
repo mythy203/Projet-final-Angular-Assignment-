@@ -13,6 +13,8 @@ export class AppComponent {
 
   constructor(private authService:AuthService,
               private router:Router){}
+
+  
 //slider
  /* login(){
     if(this.authService.loggedIn){
