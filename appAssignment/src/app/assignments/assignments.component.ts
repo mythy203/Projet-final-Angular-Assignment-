@@ -38,7 +38,9 @@ export class AssignmentsComponent implements OnInit {
   columnsToDisplay: string[] = ['nom', 'dateDeRendu', 'rendu'];
 
   // Récupérez une référence au trieur de la table
-  @ViewChild(MatSort) sort: MatSort;
+  // @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
+  
 
   dataSource: MatTableDataSource<Assignment>;
 
@@ -48,16 +50,23 @@ export class AssignmentsComponent implements OnInit {
   
   ngOnInit(): void {
     // this.getAssignments();
+
     this.getAssignmentsPaginated(this.page, this.limit);
     // Créez la source de données de table avec vos assignments
-    this.dataSource = new MatTableDataSource(this.assignments);
+    
+
+    // this.dataSource = new MatTableDataSource(this.assignments);
     // Triez la table en utilisant le trieur
-    this.dataSource.sort = this.sort;
+    // this.dataSource.sort = this.sort;
   }
   getAssignmentsPaginated(page: number, limit: number) {
     this.assignmentService.getAssignmentsPagine(page, limit)
       .subscribe(data => {
       this.assignments = data.docs;
+      // Créez la source de données de table avec vos assignments
+      this.dataSource = new MatTableDataSource(this.assignments);
+      // Triez la table en utilisant le trieur
+      this.dataSource.sort = this.sort;
       this.page = data.page;
       this.limit = data.limit;
       this.totalDocs = data.totalDocs;

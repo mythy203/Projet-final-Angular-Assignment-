@@ -11,10 +11,14 @@ export class AppComponent {
   title = 'assignment-app';
   opened=false;
 
-  constructor(private authService:AuthService,
+  constructor(public authService:AuthService,
               private router:Router){}
 
-  
+  logout() {
+    this.authService.logout();
+    // Ajoutez ici d'autres actions après une déconnexion, si nécessaire
+  }
+              
 //slider
  /* login(){
     if(this.authService.loggedIn){

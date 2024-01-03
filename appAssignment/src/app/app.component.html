@@ -4,13 +4,19 @@
         <button mat-button routerLink="/home"><mat-icon>home</mat-icon> Home</button>
         <span class="spacer"></span>
         <!-- <mat-slide-toggle (click)="login()">Login</mat-slide-toggle> -->
-        <button mat-raised-button 
+        <button *ngIf="!authService.isLoggedIn()"
+                mat-raised-button 
                 color="accent"
                 routerLink="/login"
                 >
             <mat-icon>account_box</mat-icon>
              Connexion 
         </button>
+        <!-- ajout deconnexion -->
+        <button *ngIf="authService.isLoggedIn()" mat-raised-button color="warn" (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            Déconnexion
+          </button>
     </mat-toolbar-row>
 </mat-toolbar>
 
