@@ -15,7 +15,7 @@ export class AssignmentDetailComponent implements OnInit {
   constructor(private assignmentService:AssignmentsService,
               private route:ActivatedRoute,
               private router:Router,
-              private authService:AuthService){}
+              public authService:AuthService){}
   ngOnInit(): void {
     //on récupère l'id passé dans l'url via l'objet snapshot
     //attenetion l'url étant composé de strings on utilisera

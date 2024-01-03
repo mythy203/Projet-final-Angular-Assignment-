@@ -18,6 +18,12 @@ export class AppComponent {
     this.authService.logout();
     // Ajoutez ici d'autres actions après une déconnexion, si nécessaire
   }
+  isAdmin() {
+    if(this.authService.userRole==='admin'){
+      return true;
+    }
+   return false;
+  }
               
 //slider
  /* login(){

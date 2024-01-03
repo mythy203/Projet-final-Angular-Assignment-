@@ -5,15 +5,14 @@
        <div id="buttom">
         <mat-checkbox   *ngIf="!assignmentTransmis.rendu"
                         (click)="onAssignementRendu()"
-
-        
+                        [disabled]="!authService.isLoggedIn()"
         > Devoir rendu
         </mat-checkbox>
         <!-- <nav><a [routerLink]="['/assignment', 1,'edit']"> -->
         <button mat-flat-button 
         color="primary"
         (click)="onClickEdit()"
-        [disabled]="!isAdmin()"
+        [disabled]="!authService.isLoggedIn()"
         >
              EDIT
         </button>
