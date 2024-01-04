@@ -1,7 +1,14 @@
 <mat-toolbar>
     <mat-toolbar-row>
-        <button  mat-button (click)="opened=!opened"><mat-icon>menu</mat-icon></button>
-        <button mat-button routerLink="/home"><mat-icon>home</mat-icon> Home</button>
+        <button mat-button (click)="opened=!opened" ><mat-icon>menu</mat-icon></button>
+        <button mat-button routerLink="/home" style="margin-right: 10px;"><mat-icon>home</mat-icon> Home</button>
+        <button mat-button 
+        
+                (click)="peuplerBD()" 
+                [disabled]="isPeuplementEnCours">
+                <mat-icon>backup</mat-icon>
+                Peupler la Base de Données
+        </button>
         <span class="spacer"></span>
         <!-- <mat-slide-toggle (click)="login()">Login</mat-slide-toggle> -->
         <button *ngIf="!authService.isLoggedIn()"

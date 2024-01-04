@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './shared/auth.service';
 import { Router } from '@angular/router';
+import { AssignmentsService } from './shared/assignments.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,13 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'assignment-app';
+  isPeuplementEnCours = false;
+
   opened=false;
 
   constructor(public authService:AuthService,
-              private router:Router){}
+              private router:Router,
+              private assignmentService:AssignmentsService){}
 
   logout() {
     this.authService.logout();
@@ -24,7 +28,21 @@ export class AppComponent {
     }
    return false;
   }
-              
+  peuplerBD() {
+    this.isPeuplementEnCours = true;
+    this.assignmentService.peuplerBDavecForkJoin().subscribe({
+      next: (response) => {
+        console.log("La base de données a été peuplée avec succès", response);
+        this.isPeuplementEnCours = false;
+        // ...
+      },
+      error: (err) => {
+        console.error("Erreur lors du peuplement de la base de données", err);
+        this.isPeuplementEnCours = false;
+        // ...
+      }
+    });
+  }           
 //slider
  /* login(){
     if(this.authService.loggedIn){
