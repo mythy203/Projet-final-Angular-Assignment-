@@ -32,16 +32,19 @@ export class AppComponent {
     this.isPeuplementEnCours = true;
     this.assignmentService.peuplerBDavecForkJoin().subscribe({
       next: (response) => {
+        alert('La base de données a été peuplée avec succès');
         console.log("La base de données a été peuplée avec succès", response);
         this.isPeuplementEnCours = false;
-        // ...
+        this.router.navigate(['/home']); 
+
       },
       error: (err) => {
+        alert('Erreur lors du peuplement de la base de données');
         console.error("Erreur lors du peuplement de la base de données", err);
         this.isPeuplementEnCours = false;
-        // ...
       }
     });
+    this.router.navigate(['/home']); 
   }           
 //slider
  /* login(){

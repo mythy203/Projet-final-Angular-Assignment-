@@ -44,6 +44,7 @@ import { LoginComponent } from './assignments/login/login.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { CreateAccountComponent } from './assignments/create-account/create-account.component';
 
 
 
@@ -59,6 +60,7 @@ const routes: Routes =[
     canActivate: [authGuard]
   },
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component:CreateAccountComponent}
 
 ];
 @NgModule({
@@ -70,7 +72,8 @@ const routes: Routes =[
     AddAssignmentComponent,
     AssignmentDetailComponent,
     EditAssignmentComponent,
-    LoginComponent
+    LoginComponent,
+    CreateAccountComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -24,25 +25,6 @@ export class LoginComponent {
     // Gérez l'échec de la connexion ici
   }
 }
-
- 
-  // login(){
-  //   let role = this.authService.login(this.username, this.password);
-
-  //   // if(!this.authService.userRole && role==='user'){
-  //     if(!this.authService.userRole){
-
-  //     console.log(`Login successful. Role:${role} ` );
-  //     // this.authService.logOut();
-
-  //   }else{
-  //     console.log(`Login successful. Role:${role} ` );
-  //     this.authService.userRole ='admin';
-
-  //   }
-  //   this.router.navigate(['home']);
-
-  // }
 
 }
 
