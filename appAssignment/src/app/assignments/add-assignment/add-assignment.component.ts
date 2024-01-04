@@ -12,6 +12,12 @@ export class AddAssignmentComponent implements OnInit {
   nouvelAssignement:Assignment;
   nomDevoir:string="";
   dateRendu: Date;
+  auteur:string;
+  nomMatiere:string;
+  photoMatiere:string;
+  photoProf:string;
+  note:number;
+  remarques:string;
   
   
   constructor(private assignmentService:AssignmentsService, private router:Router){
@@ -29,6 +35,13 @@ export class AddAssignmentComponent implements OnInit {
       newAssignment.nom= this.nomDevoir;
       newAssignment.dateDeRendu=this.dateRendu;
       newAssignment.rendu =false;
+      newAssignment.auteur = this.auteur;
+      newAssignment.nomMatiere = this.nomMatiere;
+      newAssignment.photoMatiere = this.photoMatiere;
+      newAssignment.photoProf = this.photoProf;
+      newAssignment.note = this.note;
+      newAssignment.remarques = this.remarques
+
       this.assignmentService.addAssignments(newAssignment)
         .subscribe(reponse =>{
           console.log(reponse.message);

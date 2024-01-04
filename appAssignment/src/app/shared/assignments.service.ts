@@ -3,6 +3,7 @@ import { Assignment } from '../assignments/assignment.model';
 import{Observable, catchError, of, tap,forkJoin} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { bdInitialAssignments } from '../shared/assignments-data'; // Assurez-vous que le chemin est correct
+import { bdInitialMatireres } from './matieres-data';
 
 @Injectable({
   // permet d'éviter de l'ajouter dans les modules...?
@@ -56,15 +57,28 @@ export class AssignmentsService {
     bdInitialAssignments.forEach(a => {
       const nouvelAssignment = new Assignment();
       nouvelAssignment.id = a.id;
-      nouvelAssignment.nom = a.nom;
+      nouvelAssignment.nom = a.nom_devoir;
       nouvelAssignment.dateDeRendu = new Date(a.dateDeRendu);
       nouvelAssignment.rendu = a.rendu;
+      nouvelAssignment.auteur = a.auteur;
+      nouvelAssignment.remarques = a.remarques;
+      nouvelAssignment.note = a.note;
+      const randomElement = this.getRandomElement(bdInitialMatireres);
+      nouvelAssignment.nomMatiere = randomElement.nomMatiere;
+      nouvelAssignment.photoMatiere = randomElement.photoMatiere;
+      nouvelAssignment.photoProf = randomElement.photoProf;
+
 
       appelsVersAddAssignment.push(this.addAssignments(nouvelAssignment));
     });
 
     return forkJoin(appelsVersAddAssignment);
   }
+  getRandomElement(array: any[]):any{
+    const randomIndex = Math.floor(Math.random() * array.length);
+    return array[randomIndex]
+  }
+  
   // Add a new method for getting paginated assignments
   getAssignmentsPagine(page:number,limit:number) : Observable<any>{
     return this.http.get<any>(this.url + '?page=' + page + '&limit=' + limit);
