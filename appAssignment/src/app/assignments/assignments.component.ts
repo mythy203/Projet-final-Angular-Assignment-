@@ -35,7 +35,7 @@ export class AssignmentsComponent implements OnInit {
     nextPage: number = 0;
 
   // Colonnes à afficher dans la table
-  columnsToDisplay: string[] = ['nom', 'dateDeRendu', 'rendu'];
+  columnsToDisplay: string[] = ['nom', 'dateDeRendu', 'rendu','nomMatiere','photoMatiere','photoProf','auteur','note','remarques'];
 
   // Récupérez une référence au trieur de la table
   // @ViewChild(MatSort) sort: MatSort;

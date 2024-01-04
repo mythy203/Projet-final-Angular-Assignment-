@@ -1,13 +1,13 @@
-.rendu{
+/* .rendu{
     color:'green';
-    border: 1px solid greenyellow;
-    background-color: yellow;
+    border: 1px solid greenyellow; 
+    background-color: yellow; 
 }
 .nonRendu{
     color:'red';
     border: 1px solid rebeccapurple;
     background-color: darksalmon;
-}
+} */
 
  
  .spacer{
@@ -126,10 +126,14 @@ mat-sidenav{
   .mat-header-row-fixed {
     position: sticky;
     top:0;
-    background-color: white; /* Définissez la couleur de fond de la ligne d'en-tête fixe */
+    background-color: rgb(196, 193, 193); /* Définissez la couleur de fond de la ligne d'en-tête fixe */
     z-index: 10; /* Assurez-vous que la ligne d'en-tête reste au-dessus du contenu de la table */
 }
   
+.photo-table {
+  width: 50px;  /* ou toute autre taille appropriée */
+  height: auto;
+}
  
     
   
