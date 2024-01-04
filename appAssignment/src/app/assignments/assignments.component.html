@@ -43,12 +43,18 @@
       </table>
     
       <!-- Pagination -->
-      <mat-paginator [length]="totalDocs"
-                     [pageSize]="limit"
-                     [pageSizeOptions]="[5, 10, 20]"
-                     [pageIndex]="page - 1"
-                     (page)="handlePageEvent($event)">
-      </mat-paginator>
+      <nav style="display:flex;justify-content: flex-end;background-color: white;">
+        <button style="margin-top: 10px" mat-flat-button (click)="goToFirstPage()" [disabled]="page === 1">Première Page</button>
+        <button style="margin-top: 10px" mat-flat-button (click)="goToLastPage()" [disabled]="page === totalPages">Dernière Page</button>
+        <mat-paginator  [length]="totalDocs"
+                        [pageSize]="limit"
+                        [pageSizeOptions]="[5, 10, 20]"
+                        [pageIndex]="page - 1"
+                        (page)="handlePageEvent($event)">
+        </mat-paginator>
+      </nav>
+      
+     
     <!-- <nav><a routerLink="/add">
             <button class="ajouterBtn" mat-flat-button color="accent">
                 Ajouter un devoir
