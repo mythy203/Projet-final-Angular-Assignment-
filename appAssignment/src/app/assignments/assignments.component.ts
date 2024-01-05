@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Matiere } from './matiere.model';
+import { bdInitialMatireres } from '../shared/matieres-data';
+import { Observable, of } from 'rxjs';
 
 
 @Component({
@@ -24,6 +27,7 @@ export class AssignmentsComponent implements OnInit {
   assignments!:Assignment[];
   isPeuplementEnCours = false;
 
+  listeMatiere:Matiere[];
   // Pagination properties
     page: number = 1;
     limit: number = 10;
@@ -78,6 +82,7 @@ export class AssignmentsComponent implements OnInit {
       console.log("données reçues");
       });
   }
+ 
   
   goToFirstPage() {
     if (this.page > 1) {

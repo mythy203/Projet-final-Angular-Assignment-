@@ -4,12 +4,14 @@ import{Observable, catchError, of, tap,forkJoin} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { bdInitialAssignments } from '../shared/assignments-data'; // Assurez-vous que le chemin est correct
 import { bdInitialMatireres } from './matieres-data';
+import { Matiere } from '../assignments/matiere.model';
 
 @Injectable({
   // permet d'éviter de l'ajouter dans les modules...?
   providedIn: 'root'
 })
 export class AssignmentsService {
+  listeMatiere: Matiere[];
 
   constructor(private http:HttpClient ) { }
   assignments:Assignment[] =[];
@@ -77,6 +79,13 @@ export class AssignmentsService {
   getRandomElement(array: any[]):any{
     const randomIndex = Math.floor(Math.random() * array.length);
     return array[randomIndex]
+  }
+  getMatiere(): Observable<Matiere[]> {
+    this.listeMatiere = bdInitialMatireres;
+    return of(bdInitialMatireres);
+  }
+  getMatiereByID(id:number):Observable<Matiere | undefined>{
+    return of(this.listeMatiere.find(a=>a.id===id))
   }
   
   // Add a new method for getting paginated assignments

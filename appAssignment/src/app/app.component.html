@@ -32,7 +32,7 @@
     <mat-sidenav [(opened)]="opened" mode="side">
     <mat-list>
         <mat-list-item><a routerLink="/home" style="text-decoration: none;" > Liste des devoirs</a> </mat-list-item>
-        <mat-list-item *ngIf="authService.isLoggedIn()"><a routerLink="/add-assignment" style="text-decoration: none;"> Ajout d'un devoir</a> </mat-list-item>
+        <mat-list-item ><a routerLink="/add-assignment" style="text-decoration: none;"> Ajout d'un devoir</a> </mat-list-item>
         <mat-list-item *ngIf="authService.isLoggedIn() "><a routerLink="/" style="text-decoration: none;"> Modification d'un devoir</a> </mat-list-item>
         <mat-list-item *ngIf="authService.isLoggedIn()  && isAdmin()"><a routerLink="/" style="text-decoration: none;"> Suppression d'un devoir</a> </mat-list-item>
         <mat-list-item *ngIf="authService.isLoggedIn()  && isAdmin()"><a routerLink="/" style="text-decoration: none;"> Génération de données de test</a> </mat-list-item>

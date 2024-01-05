@@ -1,5 +1,23 @@
 .form {
     display:flex;
-    flex-direction: column;
-    margin:5px;
+    flex-direction:column;
+    margin:0px 50px 50px 50px;
+    padding:0px 100px 100px 100px;
+
  }
+ .matiere-image, .prof-image {
+    width: 24px; /* Ajustez la taille selon vos besoins */
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 8px; /* Espace entre l'image et le texte */
+  }
+  
+
+  .mat-stepper-horizontal {
+   margin-top: 8px;
+ }
+ 
+ .mat-mdc-form-field {
+   margin-top: 16px;
+ }
+ 

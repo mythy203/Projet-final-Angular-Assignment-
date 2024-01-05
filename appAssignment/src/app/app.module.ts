@@ -46,6 +46,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { CreateAccountComponent } from './assignments/create-account/create-account.component';
 
+//formulaire add-assignment
+import {MatSelectModule} from '@angular/material/select';
+import { MatStepperModule } from '@angular/material/stepper';
+import {ReactiveFormsModule} from '@angular/forms';
+
 
 
 const routes: Routes =[
@@ -97,7 +102,10 @@ const routes: Routes =[
     HttpClientModule,
     MatPaginatorModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule,
+    MatStepperModule,
+    ReactiveFormsModule
   ],
   providers: [AssignmentsService],
   bootstrap: [AppComponent]
