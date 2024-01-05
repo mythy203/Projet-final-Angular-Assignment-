@@ -1,24 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl = 'http://localhost:8010/api/users';
+  private userUrl = 'http://localhost:8010/api/users';
   // loggedIn = false;
   private isAuthenticated = false; // Nouvelle propriété pour suivre l'état de connexion
   userRole: string | null = null;
-  private users = [
-    { username: 'user1', password: '123', role: 'user' },
-    { username: 'admin1', password: '123', role: 'admin' }
-  ];
-  constructor(private http: HttpClient) {}
-
-  // login(username: string, password: string): Observable<any> {
-  //   return this.http.post(this.loginUrl, { username, password });
-  // }
+  // private users = [
+  //   { username: 'user1', password: '123', role: 'user' },
+  //   { username: 'admin1', password: '123', role: 'admin' }
+  // ];
+  private users = [];
+  constructor(private http: HttpClient) {
+    this.fetchUsers();
+  }
+  private fetchUsers() {
+    this.http.get<any[]>(this.userUrl).subscribe(
+      data => this.users = data,
+      error => console.log('Error fetching users:', error)
+    );
+  }
 
   login(username: string, password: string): string | null {
     const user = this.users.find(u => u.username === username && u.password === password);
@@ -32,6 +37,7 @@ export class AuthService {
       return null;
     }
   }
+
   setUserRole(role: string | null) {
     this.userRole = role;
   }

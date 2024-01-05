@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/shared/auth.service';
 export class LoginComponent {
   username: string = '';
   password: string = '';
-
+  
   constructor(private authService: AuthService,
               private router:Router) {}
   login() {
@@ -26,7 +26,11 @@ export class LoginComponent {
   }
 }
 
+
 }
+
+
+//}
 
 
 
