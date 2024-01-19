@@ -119,10 +119,7 @@ mat-sidenav{
     font-size: 14px;
     color: #333;
   }
-  .container {
-    height: 400px; /* Hauteur fixe ou maximale pour le conteneur */
-    overflow: auto; /* Permet le défilement */
-  }
+
   .mat-header-row-fixed {
     position: sticky;
     top:0;
