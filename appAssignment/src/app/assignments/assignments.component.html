@@ -1,33 +1,33 @@
 <main class="container">
 
-    <!-- <nav>   
-        <button mat-flat-button 
+    <!-- <nav>
+        <button mat-flat-button
                 color="primary"
                 (click)="peuplerBD()" [disabled]="isPeuplementEnCours">Peupler la Base de Données</button>
 
     </nav> -->
 
-    <table mat-table [dataSource]="assignments" matSort >
+    <table mat-table [dataSource]="assignments" matSort matSortActive="nom" matSortDirection="asc" id="table">
 
         <!-- Ligne d'en-tête fixe -->
         <tr mat-header-row class="mat-header-row-fixed" *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
-        
-       
+
+
         <!-- Colonne pour le nom -->
         <ng-container matColumnDef="nom">
-          <th style="width: 15%;" mat-header-cell *matHeaderCellDef mat-sort-header>Nom du devoir</th>
+          <th style="width: 15%; background-color:#FFF8DC" mat-header-cell *matHeaderCellDef mat-sort-header>Nom du devoir</th>
           <td style="width: 15%;" mat-cell *matCellDef="let assignment">{{ assignment.nom }}</td>
         </ng-container>
-    
+
         <!-- Colonne pour la date de rendu -->
         <ng-container matColumnDef="dateDeRendu">
-          <th style="width: 15%;" mat-header-cell *matHeaderCellDef mat-sort-header>Date de Rendu</th>
+          <th style="width: 15%;background-color:#FFF8DC" mat-header-cell *matHeaderCellDef mat-sort-header>Date de Rendu</th>
           <td style="width: 15%;" mat-cell *matCellDef="let assignment">{{ assignment.dateDeRendu | date }}</td>
         </ng-container>
-    
+
         <!-- Colonne pour le statut de rendu -->
         <ng-container matColumnDef="rendu">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%;">Statut</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%;background-color:#FFF8DC">Statut</th>
           <td mat-cell *matCellDef="let assignment" style="width: 10%;">
             <span class="rendu" *ngIf="assignment.rendu; else nonRendu">Rendu</span>
             <ng-template #nonRendu>Non Rendu</ng-template>
@@ -35,40 +35,40 @@
         </ng-container>
 
         <ng-container matColumnDef="nomMatiere">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Matière</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%;background-color:#FFF8DC">Matière</th>
           <td mat-cell *matCellDef="let assignment">{{ assignment.nomMatiere }}</td>
         </ng-container>
         <!-- Colonne pour la photo de la matière -->
         <ng-container matColumnDef="photoMatiere">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%;background-color:#FFF8DC"></th>
           <td mat-cell *matCellDef="let assignment">
             <img *ngIf="assignment.photoMatiere" [src]="assignment.photoMatiere" alt="Photo de la matière" class="photo-table">
           </td>
         </ng-container>
         <!-- Colonne pour la photo du prof -->
         <ng-container matColumnDef="photoProf">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Professeur</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%;background-color:#FFF8DC">Professeur</th>
           <td mat-cell *matCellDef="let assignment">
             <img *ngIf="assignment.photoProf" [src]="assignment.photoProf" alt="Photo du prof" class="photo-table">
           </td>
         </ng-container>
-                
+
         <!-- Colonne pour nom d'étudiant-->
         <ng-container matColumnDef="auteur">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Etudiant</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%;background-color:#FFF8DC">Etudiant</th>
           <td mat-cell *matCellDef="let assignment">{{ assignment.auteur }}</td>
         </ng-container>
         <!-- Colonne pour la note -->
         <ng-container matColumnDef="note">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Note</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%;background-color:#FFF8DC">Note</th>
           <td mat-cell *matCellDef="let assignment">{{ assignment.note }}</td>
         </ng-container>
         <!-- Colonne pour les remarques -->
         <ng-container matColumnDef="remarques">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Remarques</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%;background-color:#FFF8DC">Remarques</th>
           <td mat-cell *matCellDef="let assignment">{{ assignment.remarques }}</td>
         </ng-container>
-        
+
 
         <!-- Définition des colonnes -->
         <!-- <tr mat-header-row class="mat-header-row-fixed" *matHeaderRowDef="columnsToDisplay"></tr> -->
@@ -76,27 +76,27 @@
         <tr mat-row *matRowDef="let row; columns: columnsToDisplay" [routerLink]="['/assignment', row.id]"></tr>
 
       </table>
-    
+
       <!-- Pagination -->
       <nav style="display:flex;justify-content: flex-end;background-color: white;">
         <button style="margin-top: 10px" mat-flat-button (click)="goToFirstPage()" [disabled]="page === 1">Première Page</button>
         <button style="margin-top: 10px" mat-flat-button (click)="goToLastPage()" [disabled]="page === totalPages">Dernière Page</button>
         <mat-paginator  [length]="totalDocs"
                         [pageSize]="limit"
-                        [pageSizeOptions]="[5, 10, 20]"
+
                         [pageIndex]="page - 1"
                         (page)="handlePageEvent($event)">
         </mat-paginator>
       </nav>
-      
-     
+
+
     <!-- <nav><a routerLink="/add">
             <button class="ajouterBtn" mat-flat-button color="accent">
                 Ajouter un devoir
             </button> -->
 
         <!-- </a></nav> -->
-        <!-- 
+        <!--
         <nav>
             <button mat-flat-button (click)="goToFirstPage()" [disabled]="page === 1">Première Page</button>
             <button mat-flat-button (click)="goToPrevPage()" [disabled]="page === 1">Page Précédente</button>
@@ -104,7 +104,7 @@
             <button mat-flat-button (click)="goToNextPage()" [disabled]="page === totalPages">Page Suivante</button>
             <button mat-flat-button (click)="goToLastPage()" [disabled]="page === totalPages">Dernière Page</button>
           </nav> -->
-        
+
           <!-- <mat-paginator
             [length]="totalDocs"
             [pageSize]="limit"
@@ -133,8 +133,8 @@
                 <mat-divider></mat-divider>
             </a></nav>
     </mat-list> -->
-    
-      
+
+
 </main>
 
 

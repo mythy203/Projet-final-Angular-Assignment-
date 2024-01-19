@@ -2,9 +2,9 @@
     <mat-toolbar-row>
         <button mat-button (click)="opened=!opened" ><mat-icon>menu</mat-icon></button>
         <button mat-button routerLink="/home" style="margin-right: 10px;"><mat-icon>home</mat-icon> Home</button>
-        <button mat-button 
-        
-                (click)="peuplerBD()" 
+        <button mat-button
+
+                (click)="peuplerBD()"
                 [disabled]="isPeuplementEnCours">
                 <mat-icon>backup</mat-icon>
                 Peupler la Base de Données
@@ -12,15 +12,15 @@
         <span class="spacer"></span>
         <!-- <mat-slide-toggle (click)="login()">Login</mat-slide-toggle> -->
         <button *ngIf="!authService.isLoggedIn()"
-                mat-raised-button 
+                mat-raised-button
                 color="accent"
                 routerLink="/login"
                 >
             <mat-icon>account_box</mat-icon>
-             Connexion 
+             Connexion
         </button>
         <!-- ajout deconnexion -->
-        <button *ngIf="authService.isLoggedIn()" mat-raised-button color="warn" (click)="logout()">
+        <button *ngIf="authService.isLoggedIn()" mat-raised-button color="accent" (click)="logout()">
             <mat-icon>exit_to_app</mat-icon>
             Déconnexion
           </button>
@@ -31,13 +31,17 @@
 <mat-sidenav-container>
     <mat-sidenav [(opened)]="opened" mode="side">
     <mat-list>
-        <mat-list-item><a routerLink="/home" style="text-decoration: none;" > Liste des devoirs</a> </mat-list-item>
-        <mat-list-item ><a routerLink="/add-assignment" style="text-decoration: none;"> Ajout d'un devoir</a> </mat-list-item>
-        <mat-list-item *ngIf="authService.isLoggedIn() "><a routerLink="/" style="text-decoration: none;"> Modification d'un devoir</a> </mat-list-item>
-        <mat-list-item *ngIf="authService.isLoggedIn()  && isAdmin()"><a routerLink="/" style="text-decoration: none;"> Suppression d'un devoir</a> </mat-list-item>
-        <mat-list-item *ngIf="authService.isLoggedIn()  && isAdmin()"><a routerLink="/" style="text-decoration: none;"> Génération de données de test</a> </mat-list-item>
+        <mat-list-item class="sidenav-item"><a routerLink="/home" style="text-decoration: none;" > Liste des devoirs</a> </mat-list-item>
+        <mat-divider ></mat-divider>
+        <mat-list-item class="sidenav-item"><a routerLink="/add-assignment" style="text-decoration: none;"> Ajout d'un devoir</a> </mat-list-item>
+        <mat-divider ></mat-divider>
+        <mat-list-item class="sidenav-item" *ngIf="authService.isLoggedIn() "><a routerLink="/" style="text-decoration: none;"> Modification d'un devoir</a> </mat-list-item>
+        <mat-divider ></mat-divider>
+        <mat-list-item class="sidenav-item" *ngIf="authService.isLoggedIn()  && isAdmin()"><a routerLink="/" style="text-decoration: none;"> Suppression d'un devoir</a> </mat-list-item>
+        <mat-divider ></mat-divider>
+        <mat-list-item class="sidenav-item" *ngIf="authService.isLoggedIn()  && isAdmin()"><a routerLink="/" style="text-decoration: none;"> Génération de données de test</a> </mat-list-item>
     </mat-list>
-    
+
     </mat-sidenav>
 
     <mat-sidenav-content>

@@ -1,26 +1,51 @@
 form {
-    max-width: 400px;
-    margin: 20px auto;
-    margin-top: 40px;
-    padding: 50px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-  }
+  max-width: 400px;
+  margin: 20px auto;
+  margin-top: 40px;
+  padding: 50px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color:mediumvioletred;
+}
+
 label {
-    display: block;
-    margin-bottom: 8px;
-  }
+  display: block;
+  margin-bottom: 8px;
+}
+
+form label {
+  color: white;
+  font-size: 18px;
+}
+
+div,input[type="text"], input[type="password"], button {
+  width: 100%;
+}
 
 button {
-    cursor: pointer;
+  cursor: pointer;
+  margin-top: 10px;
 }
-#signup{
-  background-color: cadetblue;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin-right: 20px;
-  margin-bottom: 15px;
+
+#username, #password {
+  font-size: 25px;
+}
+
+#login-button {
+  cursor: pointer;
+  margin-top: 10px;
+  background-color:blanchedalmond;
+  font-size: 18px;
+  /* Add any other styles you want for the "Login" button here */
+}
+
+#signup {
+  cursor: pointer;
+  margin-top: 10px;
+  background-color:blanchedalmond;
+  font-size: 18px;
 }

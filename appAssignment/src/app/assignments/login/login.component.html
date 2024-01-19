@@ -1,14 +1,18 @@
 <form (ngSubmit)="login()">
-    <label for="username">Username:</label>
-    <input type="text" id="username" [(ngModel)]="username" name="username" required>
+  <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" [(ngModel)]="username" name="username" required>
+  </div>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" [(ngModel)]="password" name="password" required>
+  <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" [(ngModel)]="password" name="password" required>
+  </div>
 
-    <button style="margin-left: 10px;" type="submit">Login</button>
-    <button id="signup" mat-button routerLink="/signup" type="button">Sign up</button>
-
-    <!-- Bouton pour créer un compte, redirige vers la page d'inscription -->
+  <div>
+    <button mat-button id="login-button" type="submit">Login</button>
+  </div>
+  <div>
+      <button class="button-style" id="signup" mat-button routerLink="/signup" type="button">Sign up</button>
+  </div>
 </form>
-
-

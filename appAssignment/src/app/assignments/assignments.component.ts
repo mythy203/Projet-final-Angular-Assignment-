@@ -24,7 +24,7 @@ export class AssignmentsComponent implements OnInit {
   assignementSelectionne!:Assignment;// assignementSelectionne:Assignment; (désactiver le mode strict = false tsconfig.json)
   formVisible =false;
 
-  assignments!:Assignment[];
+  assignments!:MatTableDataSource<Assignment>;
   isPeuplementEnCours = false;
 
   listeMatiere:Matiere[];
@@ -43,21 +43,18 @@ export class AssignmentsComponent implements OnInit {
 
   // Récupérez une référence au trieur de la table
   // @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatSort, {static: false}) sort: MatSort;
-  
-
-  dataSource: MatTableDataSource<Assignment>;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private assignmentService:AssignmentsService,
               private authService:AuthService,
               private router:Router){}
-  
+
   ngOnInit(): void {
     // this.getAssignments();
 
     this.getAssignmentsPaginated(this.page, this.limit);
     // Créez la source de données de table avec vos assignments
-    
+
 
     // this.dataSource = new MatTableDataSource(this.assignments);
     // Triez la table en utilisant le trieur
@@ -66,11 +63,11 @@ export class AssignmentsComponent implements OnInit {
   getAssignmentsPaginated(page: number, limit: number) {
     this.assignmentService.getAssignmentsPagine(page, limit)
       .subscribe(data => {
-      this.assignments = data.docs;
       // Créez la source de données de table avec vos assignments
-      this.dataSource = new MatTableDataSource(this.assignments);
+      this.assignments = new MatTableDataSource(data.docs);
       // Triez la table en utilisant le trieur
-      this.dataSource.sort = this.sort;
+      this.assignments.sort = this.sort;
+      this.sort.disableClear = true;
       this.page = data.page;
       this.limit = data.limit;
       this.totalDocs = data.totalDocs;
@@ -82,8 +79,8 @@ export class AssignmentsComponent implements OnInit {
       console.log("données reçues");
       });
   }
- 
-  
+
+
   goToFirstPage() {
     if (this.page > 1) {
       this.page = 1;
@@ -124,7 +121,7 @@ export class AssignmentsComponent implements OnInit {
   getAssignments(){
     this.assignmentService.getAssignments()
     .subscribe(assignments => {
-      this.assignments =assignments;
+      // this.assignments =assignments;
     })
   }
   peuplerBD() {
@@ -152,7 +149,7 @@ export class AssignmentsComponent implements OnInit {
 
 
     }
-    
+
   }*/
   /*
   assignmentClique(assignment:Assignment) {
