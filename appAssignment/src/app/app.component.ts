@@ -32,10 +32,12 @@ export class AppComponent {
     this.isPeuplementEnCours = true;
     this.assignmentService.peuplerBDavecForkJoin().subscribe({
       next: (response) => {
-        alert('La base de données a été peuplée avec succès');
+        // alert('La base de données a été peuplée avec succès');
         console.log("La base de données a été peuplée avec succès", response);
         this.isPeuplementEnCours = false;
-        this.router.navigate(['/home']); 
+        // this.router.navigate(['/home']); 
+        window.location.reload(); 
+
 
       },
       error: (err) => {

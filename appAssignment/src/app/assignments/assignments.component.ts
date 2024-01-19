@@ -130,6 +130,7 @@ export class AssignmentsComponent implements OnInit {
       next: (response) => {
         console.log("La base de données a été peuplée avec succès", response);
         this.isPeuplementEnCours = false;
+        window.location.reload();
         // ...
       },
       error: (err) => {

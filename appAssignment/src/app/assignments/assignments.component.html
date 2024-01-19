@@ -83,7 +83,7 @@
         <button style="margin-top: 10px" mat-flat-button (click)="goToLastPage()" [disabled]="page === totalPages">Dernière Page</button>
         <mat-paginator  [length]="totalDocs"
                         [pageSize]="limit"
-
+                        [pageSizeOptions]="[5, 10, 20]"
                         [pageIndex]="page - 1"
                         (page)="handlePageEvent($event)">
         </mat-paginator>
