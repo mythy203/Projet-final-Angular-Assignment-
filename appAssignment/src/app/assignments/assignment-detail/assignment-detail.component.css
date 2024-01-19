@@ -3,3 +3,13 @@
     justify-content: space-between;
     align-items:flex-end;
 }
+.matiere-image {
+    width: 30px; /* ou la taille que vous voulez */
+    height: 30px; 
+    margin-right: 10px;/* la hauteur doit être la même que la largeur pour un cercle parfait */
+  }
+.prof-image{
+    width: 100px; /* ou la taille que vous voulez */
+    height: 100px;
+    border-radius: 30%; /* ou la taille que vous voulez */
+  }
