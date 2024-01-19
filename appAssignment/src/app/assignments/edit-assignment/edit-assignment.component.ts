@@ -21,7 +21,9 @@ export class EditAssignmentComponent implements OnInit {
   ngOnInit(): void {
     const id = +this.route.snapshot.params['id']
     this.assignmentService.getAssignment(id)
-      .subscribe(ass => this.assignment=ass )
+      .subscribe(ass => {this.assignment=ass; 
+                        this.nom = this.assignment.nom; 
+                        this.dateDeRendu = this.assignment.dateDeRendu;} )
     
       const paramsHTTP =this.route.snapshot.queryParams['nom'];
       const fragment= this.route.snapshot.fragment;
