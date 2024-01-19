@@ -7,7 +7,7 @@
 
     </nav> -->
 
-    <table mat-table [dataSource]="assignments" matSort >
+    <table mat-table [dataSource]="assignments" matSort matSortActive="nom" matSortDirection="asc" id="table">
 
         <!-- Ligne d'en-tête fixe -->
         <tr mat-header-row class="mat-header-row-fixed" *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
