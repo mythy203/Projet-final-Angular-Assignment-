@@ -1,15 +1,47 @@
-<div class ="container">
+<div class="container">
     <mat-card *ngIf="assignmentTransmis">
-        <mat-card-title > <img  [src]="assignmentTransmis.photoMatiere" alt="Image de la matière" class="matiere-image">{{assignmentTransmis.nom}}</mat-card-title>
+      <div class="prof-subject">
+        <img [src]="assignmentTransmis.photoProf" alt="Image de la matière" class="prof-image">
+        <div class="subject-info">
+          <span class="subject-label">Matière</span>
+          <span class="subject-name">{{assignmentTransmis.nomMatiere}}</span>
+        </div>
+      </div>
+
+      <div class="matiere-info">
+        <img [src]="assignmentTransmis.photoMatiere" alt="Image de la matière" class="matiere-image">
+        <div class="matiere-detail">
+          <div class="info-pair">
+            <span>Devoir : </span>
+            <span class="info-value">{{assignmentTransmis.nom}}</span>
+          </div>
+
+          <div class="info-pair">
+            <span>Date de rendu : </span>
+            <span class="info-value">{{assignmentTransmis.dateDeRendu|date}}</span>
+          </div>
+
+          <div class="info-pair">
+            <span>Note : </span>
+            <span class="info-value">{{assignmentTransmis.note}}</span>
+          </div>
+
+          <div class="info-pair">
+            <span>Remarque : </span>
+            <span class="info-value">{{assignmentTransmis.remarques}}</span>
+          </div>
+        </div>
+      </div>
+<!--         <mat-card-title > <img  [src]="assignmentTransmis.photoMatiere" alt="Image de la matière" class="matiere-image">{{assignmentTransmis.nom}}</mat-card-title>
         <mat-card-subtitle>{{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle>
         <mat-card-subtitle>{{assignmentTransmis.nomMatiere}}
             <img  [src]="assignmentTransmis.photoProf" alt="Image de la matière" class="prof-image">
-        
+
         </mat-card-subtitle>
         <mat-card-subtitle>{{assignmentTransmis.note}}</mat-card-subtitle>
 
-        <mat-card-subtitle>{{assignmentTransmis.remarques}}</mat-card-subtitle>
-        
+        <mat-card-subtitle>{{assignmentTransmis.remarques}}</mat-card-subtitle> -->
+
 
 
 
@@ -20,7 +52,7 @@
         > Devoir rendu
         </mat-checkbox> -->
         <!-- <nav><a [routerLink]="['/assignment', 1,'edit']"> -->
-        <button mat-flat-button 
+        <button mat-flat-button
         color="primary"
         (click)="onClickEdit()"
         [disabled]="!authService.isLoggedIn()"
@@ -28,7 +60,7 @@
              EDIT
         </button>
         <!-- </a></nav> -->
-        <button mat-flat-button 
+        <button mat-flat-button
                 color="warn"
                 (click)="onDelete()"
                 [disabled]="!isAdmin()"

@@ -34,6 +34,14 @@ mat-sidenav{
     align-self: flex-end;
 }
 
+.assignment-row {
+  cursor: pointer;
+}
+
+.assignment-row:hover {
+  background-color: #FFF8DC;
+}
+
 /* Style pour les boutons de pagination */
 .mat-flat-button {
     margin: 4px; /* Marge autour des boutons */

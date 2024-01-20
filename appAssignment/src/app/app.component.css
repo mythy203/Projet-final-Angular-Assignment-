@@ -6,6 +6,10 @@ mat-sidenav-container {
     flex: 1 1 auto;
 }
 
+.user-button {
+  margin-right: 20px;
+}
+
 mat-toolbar {
   background: linear-gradient(to right, darkblue, mediumvioletred, white);
   color: white;

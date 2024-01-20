@@ -2,18 +2,14 @@
     <p style="font-weight: bold;">Créer un compte</p>
     <label for="username">Username:</label>
     <input type="text" id="username" [(ngModel)]="newUser.username"   name="username" required>
-
     <label for="password">Password:</label>
     <input type="password" id="password" [(ngModel)]="newUser.password"  name="password" required>
     <section class="checkbox-section">
-            <input type="radio" name="role" value="user" [(ngModel)]="newUser.role" checked> User
-            <input type="radio" name="role" value="admin" [(ngModel)]="newUser.role"> Admin
+      <input type="radio" name="role" value="user" [(ngModel)]="newUser.role" checked> <span class="user-text">User</span>
+      <input type="radio" name="role" value="admin" [(ngModel)]="newUser.role"> Admin
     </section>
     <div class="signup-button">
-        <button style="margin-left: 10px;" type="submit">Sign up</button>
+        <button mat-button style="margin-left: 10px;" type="submit">Sign up</button>
     </div>
-    
-    
-    
 </form>
 

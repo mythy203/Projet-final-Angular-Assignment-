@@ -73,8 +73,7 @@
         <!-- Définition des colonnes -->
         <!-- <tr mat-header-row class="mat-header-row-fixed" *matHeaderRowDef="columnsToDisplay"></tr> -->
         <!-- ajouter routerLink pour chaque fois, on clique une ligne, il affiche le détail du devoir -->
-        <tr mat-row *matRowDef="let row; columns: columnsToDisplay" [routerLink]="['/assignment', row.id]"></tr>
-
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay" [routerLink]="['/assignment', row.id]" class="assignment-row"></tr>
       </table>
 
       <!-- Pagination -->

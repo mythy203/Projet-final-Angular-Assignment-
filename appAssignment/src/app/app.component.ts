@@ -11,7 +11,7 @@ import { AssignmentsService } from './shared/assignments.service';
 export class AppComponent {
   title = 'assignment-app';
   isPeuplementEnCours = false;
-
+  
   opened=false;
 
   constructor(public authService:AuthService,
@@ -35,8 +35,8 @@ export class AppComponent {
         // alert('La base de données a été peuplée avec succès');
         console.log("La base de données a été peuplée avec succès", response);
         this.isPeuplementEnCours = false;
-        // this.router.navigate(['/home']); 
-        window.location.reload(); 
+        // this.router.navigate(['/home']);
+        window.location.reload();
 
 
       },
@@ -46,8 +46,8 @@ export class AppComponent {
         this.isPeuplementEnCours = false;
       }
     });
-    this.router.navigate(['/home']); 
-  }           
+    this.router.navigate(['/home']);
+  }
 //slider
  /* login(){
     if(this.authService.loggedIn){
@@ -59,6 +59,6 @@ export class AppComponent {
 
     }
     console.log("click")
-    
+
   }*/
 }

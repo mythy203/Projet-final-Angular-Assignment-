@@ -1,15 +1,66 @@
 #buttom{
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items:flex-end;
 }
+
 .matiere-image {
-    width: 30px; /* ou la taille que vous voulez */
-    height: 30px; 
-    margin-right: 10px;/* la hauteur doit être la même que la largeur pour un cercle parfait */
-  }
+  width: 100px;
+  height: 100px;
+  border-radius: 30%;
+  margin-top: 20px;
+  margin-right: 20px; /* Adjust this value to change the distance */
+  margin-bottom: 10px;
+}
 .prof-image{
     width: 100px; /* ou la taille que vous voulez */
     height: 100px;
     border-radius: 30%; /* ou la taille que vous voulez */
+    margin-top: 20px;
+  }
+
+  .info-pair {
+    display: flex;
+    justify-content:left;
+    font-size: 20px;
+  }
+
+  .matiere-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blanchedalmond;
+  }
+
+  .matiere-detail {
+    margin-top: 20px;
+  }
+
+  .prof-subject {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:blanchedalmond;
+  }
+
+  .subject-name {
+    font-size: 30px;
+    font-style: italic;
+  }
+
+  .subject-label {
+    font-size: 30px;
+    display: block;
+  }
+
+  .subject-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+  .info-value {
+    margin-left: 10px;
   }

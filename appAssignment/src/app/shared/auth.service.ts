@@ -10,6 +10,7 @@ export class AuthService {
   // loggedIn = false;
   private isAuthenticated = false; // Nouvelle propriété pour suivre l'état de connexion
   userRole: string | null = null;
+  loggedInUser: string | null = null;
   // private users = [
   //   { username: 'user1', password: '123', role: 'user' },
   //   { username: 'admin1', password: '123', role: 'admin' }
@@ -30,10 +31,12 @@ export class AuthService {
     if (user) {
       this.isAuthenticated = true;  // Utilisateur est authentifié
       this.userRole = user.role;    // Mettre à jour le rôle de l'utilisateur
+      this.loggedInUser = username;
       return user.role;             // Retourne le rôle ('user' ou 'admin')
     } else {
       this.isAuthenticated = false; // Échec de l'authentification
       this.userRole = null;
+      this.loggedInUser = null;
       return null;
     }
   }
@@ -44,6 +47,7 @@ export class AuthService {
   logout() {
     this.userRole = null;
     this.isAuthenticated = false; // Réinitialiser l'état de connexion
+    this.loggedInUser = null;
   }
 
   isLoggedIn(): boolean {
@@ -61,6 +65,6 @@ export class AuthService {
     return isUserAdmin;
   }
 
- 
+
 
 }
