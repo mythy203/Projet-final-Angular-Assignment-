@@ -26,7 +26,7 @@ Améliorer le TP sur les assignments.
 
 #### Approches
 - [x] Approche Facile : Ajouter des propriétés au modèle des Assignments (dans le frontend et dans le backend). C'est recommandé pour la plupart.
-- [ ] Approche Avancée : Ajouter une collection "matières" et/ou "élèves", impactant plus le backend, c'est une solution optionnelle pour les meilleurs parmi vous.
+- [x] Approche Avancée : Ajouter une collection "matières" et/ou "élèves", impactant plus le backend, c'est une solution optionnelle pour les meilleurs parmi vous. on a fait la collection matieres
 
 - [x] Améliorer l'affichage des Assignments.
   - [x] Afficher les assignments dans une table Angular Material, avec tri, lignes d'en-têtes fixes, et pagination.
