@@ -4,18 +4,6 @@
 - TRINH Thi Thanh Thuy
 - Dao Tuan Linh
 
-## Table des Matières
-- [Introduction](#introduction)
-- [Objectif](#objectif)
-- [Tâches](#tâches)
-  - [Facile avec Options Avancées](#facile-avec-options-avancées)
-- [Fonctionnalités Supplémentaires](#fonctionnalités-supplémentaires)
-- [Style et Navigation](#style-et-navigation)
-- [Hébergement](#hébergement)
-- [Fonctionnalités Ouvertes](#fonctionnalités-ouvertes)
-- [Groupe](#groupe)
-
-
 ## Objectif
 Améliorer le TP sur les assignments.
 
