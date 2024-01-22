@@ -1,5 +1,5 @@
 <div class="container" ngForm *ngIf="assignment">
-    <h1>Edition de l'assignment {{assignment.nom}}</h1>
+    <h2 class="titleEdit">Edition de l'assignment {{assignment.nom}}</h2>
     <form ngForm class="form">
     <mat-form-field>
         <input  matInput 
@@ -17,7 +17,36 @@
         <mat-datepicker #picker></mat-datepicker>
                
     </mat-form-field>
-
+    <mat-form-field>
+        <mat-label>Matière</mat-label>
+        <mat-select [(ngModel)]="nomMatiere" (ngModelChange)="onMatiereSelected()" name="matiere">
+          <mat-option *ngFor="let matiere of matieres" [value]="matiere.nomMatiere">
+            {{ matiere.nomMatiere }}
+            <img [src]="matiere.photoMatiere" alt="Image de la matière" class="matiere-image">
+            <img [src]="matiere.photoProf" alt="Photo du prof" class="prof-image">
+          </mat-option>
+            
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input  matInput 
+                placeholder="Nom d'étudiant" 
+                [(ngModel)]="auteur" 
+                name="nomEtudiant" >
+        </mat-form-field>
+        <mat-checkbox  
+            [(ngModel)]="rendu"
+            name="rendu"
+            > Devoir rendu
+    </mat-checkbox>
+    <div *ngIf="rendu">
+        <mat-form-field style="padding-right: 10px;">
+          <input matInput placeholder="Note" [(ngModel)]="note" name="note">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Remarques" [(ngModel)]="remarques" name="remarques">
+        </mat-form-field>
+      </div>
     <button type="button"
             mat-stroked-button 
             color="primary" 
