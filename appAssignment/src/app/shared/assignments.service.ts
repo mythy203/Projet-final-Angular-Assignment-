@@ -18,6 +18,7 @@ export class AssignmentsService {
   //url de Heroku
   // url = "https://api-cours-angular2023-6bb9d00082cc.herokuapp.com/api/assignments"
   url = "http://localhost:8010/api/assignments"
+
   getAssignments():Observable<Assignment[]>{
     return this.http.get<Assignment[]>(this.url);
   }
@@ -92,6 +93,7 @@ export class AssignmentsService {
   getAssignmentsPagine(page:number,limit:number) : Observable<any>{
     return this.http.get<any>(this.url + '?page=' + page + '&limit=' + limit);
   }
+ 
   
 }
 

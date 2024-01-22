@@ -6,6 +6,19 @@
                 (click)="peuplerBD()" [disabled]="isPeuplementEnCours">Peupler la Base de Données</button>
 
     </nav> -->
+    <form class="searchFilter">
+    <mat-form-field class="searchbar" appearance="fill">
+      <mat-label>Recherche</mat-label>
+      <input matInput placeholder="Rechercher..." [(ngModel)]="searchText" (keyup)="applyFilter($event)">
+      <button mat-icon-button matSuffix>
+        <mat-icon>search</mat-icon>
+      </button>
+      
+    </mat-form-field>
+    <button mat-icon-button class="filter-button">
+      <mat-icon>filter_list</mat-icon>
+    </button>
+  </form>
 
     <table mat-table [dataSource]="assignments" matSort matSortActive="nom" matSortDirection="asc" id="table">
 

@@ -86,7 +86,7 @@ mat-sidenav{
 /* Style pour la table */
 .mat-table {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
     border-collapse: collapse;
   }
 
@@ -139,5 +139,17 @@ mat-sidenav{
   width: 50px;  /* ou toute autre taille appropriée */
   height: auto;
 }
+.searchFilter{
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+.searchbar{
+  width: 50%;
+  padding-top: 15px;
+  margin: unset;
+}
+
+
 
 

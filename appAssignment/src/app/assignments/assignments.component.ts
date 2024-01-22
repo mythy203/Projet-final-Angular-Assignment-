@@ -26,6 +26,11 @@ export class AssignmentsComponent implements OnInit {
 
   assignments!:MatTableDataSource<Assignment>;
   isPeuplementEnCours = false;
+  searchText: string = '';
+  renduFilter: boolean=false;
+  filterAssignments: MatTableDataSource<Assignment> ;
+
+
 
   listeMatiere:Matiere[];
   // Pagination properties
@@ -59,6 +64,10 @@ export class AssignmentsComponent implements OnInit {
     // this.dataSource = new MatTableDataSource(this.assignments);
     // Triez la table en utilisant le trieur
     // this.dataSource.sort = this.sort;
+
+    this.assignments.filterPredicate = (data: Assignment, filter: string) => {
+      return data.nom.toLowerCase().includes(filter);
+    };
   }
   getAssignmentsPaginated(page: number, limit: number) {
     this.assignmentService.getAssignmentsPagine(page, limit)
@@ -118,12 +127,12 @@ export class AssignmentsComponent implements OnInit {
   }
 
 
-  getAssignments(){
-    this.assignmentService.getAssignments()
-    .subscribe(assignments => {
-      // this.assignments =assignments;
-    })
-  }
+  // getAssignments(){
+  //   this.assignmentService.getAssignments()
+  //   .subscribe(assignments => {
+  //     // this.assignments =assignments;
+  //   })
+  // }
   peuplerBD() {
     this.isPeuplementEnCours = true;
     this.assignmentService.peuplerBDavecForkJoin().subscribe({
@@ -140,34 +149,12 @@ export class AssignmentsComponent implements OnInit {
       }
     });
   }
-  /*
-  login(){
-    if(this.authService.loggedIn){
-      this.authService.logOut();
-      this.router.navigate(['home']);
-    }else{
-      this.authService.loggedIn =true;
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.assignments.filter = filterValue;
+  }
+  
+ 
 
-
-    }
-
-  }*/
-  /*
-  assignmentClique(assignment:Assignment) {
-    this.assignementSelectionne = assignment;
-  }*/
-  /*
-  onAddAssignmentBtnClick(){
-    this.formVisible=true;
-  }*/
-  /*
-  onNouvelAssignement(event:Assignment){
-    // event est un Assignment ajouté par le fils (add-assignment)
-    // this.assignments.push(event);
-    this.assignmentService.addAssignments(event)
-    .subscribe((message)=> console.log(message));
-
-    //on cache le formulaire d'ajout
-    this.formVisible=false;
-  }*/
+ 
 }

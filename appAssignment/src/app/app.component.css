@@ -1,5 +1,7 @@
 mat-sidenav-container {
   height: 100vh;
+  background: url("https://img.freepik.com/vecteurs-libre/fond-peint-aquarelle-pastel_23-2148959637.jpg?w=826&t=st=1705833740~exp=1705834340~hmac=d723c7b59cf41012759873046a3f6dc21b61c49474ce28b055acaf009fdf4ebb")no-repeat center center;
+  background-size: cover;
 }
 
 .spacer{

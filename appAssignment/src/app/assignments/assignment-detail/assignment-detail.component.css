@@ -1,3 +1,7 @@
+.container{
+ background-color: none;
+ position: relative;
+}
 #buttom{
     position: relative;
     display: flex;
@@ -30,7 +34,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: blanchedalmond;
   }
 
   .matiere-detail {
@@ -41,7 +44,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:blanchedalmond;
   }
 
   .subject-name {
@@ -64,3 +66,7 @@
   .info-value {
     margin-left: 10px;
   }
+.matcard{
+  background-color: rgba(255, 255, 255, 0.5);
+
+}
