@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Matiere } from '../matiere.model';
 import { AuthService } from 'src/app/shared/auth.service';
 import {FormBuilder, Validators, FormsModule, ReactiveFormsModule, FormGroup} from '@angular/forms';
-
+import { MatiereService } from 'src/app/shared/matiere.service';
 @Component({
   selector: 'app-add-assignment',
   templateUrl: './add-assignment.component.html',
@@ -35,7 +35,8 @@ export class AddAssignmentComponent implements OnInit {
               private router:Router,
               private authservice:AuthService,
               private _formBuilder: FormBuilder,
-              private changeDetector: ChangeDetectorRef
+              private changeDetector: ChangeDetectorRef,
+              private matiereService: MatiereService
              ){
 
   }
@@ -44,7 +45,7 @@ export class AddAssignmentComponent implements OnInit {
       this.router.navigate(['/login']); 
     }
     else{
-      this.assignmentService.getMatiere().
+      this.matiereService.getMatieres().
       subscribe(matieres => {
         this.matieres = matieres;
       });
