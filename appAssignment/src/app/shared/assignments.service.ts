@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Assignment } from '../assignments/assignment.model';
-import{Observable, catchError, of, tap,forkJoin} from 'rxjs';
+import{Observable, catchError, of, tap,forkJoin, switchMap} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { bdInitialAssignments } from '../shared/assignments-data'; // Assurez-vous que le chemin est correct
 import { bdInitialMatireres } from './matieres-data';
 import { Matiere } from '../assignments/matiere.model';
+import { MatiereService } from './matiere.service';
 
 @Injectable({
   // permet d'éviter de l'ajouter dans les modules...?
@@ -13,7 +14,8 @@ import { Matiere } from '../assignments/matiere.model';
 export class AssignmentsService {
   listeMatiere: Matiere[];
 
-  constructor(private http:HttpClient ) { }
+  constructor(private http:HttpClient,
+              private matiere:MatiereService ) { }
   assignments:Assignment[] =[];
   //url de Heroku
   // url = "https://api-cours-angular2023-6bb9d00082cc.herokuapp.com/api/assignments"
@@ -53,30 +55,61 @@ export class AssignmentsService {
   deleteAssignment(assignment:Assignment):Observable<any>{
     return this.http.delete(this.url + "/" + assignment._id)
   }
-
-  peuplerBDavecForkJoin(): Observable<any> {
-    let appelsVersAddAssignment: Observable<any>[] = [];
-
-    bdInitialAssignments.forEach(a => {
-      const nouvelAssignment = new Assignment();
-      nouvelAssignment.id = a.id;
-      nouvelAssignment.nom = a.nom_devoir;
-      nouvelAssignment.dateDeRendu = new Date(a.dateDeRendu);
-      nouvelAssignment.rendu = a.rendu;
-      nouvelAssignment.auteur = a.auteur;
-      nouvelAssignment.remarques = a.remarques;
-      nouvelAssignment.note = a.note;
-      const randomElement = this.getRandomElement(bdInitialMatireres);
-      nouvelAssignment.nomMatiere = randomElement.nomMatiere;
-      nouvelAssignment.photoMatiere = randomElement.photoMatiere;
-      nouvelAssignment.photoProf = randomElement.photoProf;
-
-
-      appelsVersAddAssignment.push(this.addAssignments(nouvelAssignment));
+  listeMatieres(){
+    this.matiere.getMatieres().subscribe(matieres => {
+      this.listeMatiere = matieres;
     });
-
-    return forkJoin(appelsVersAddAssignment);
   }
+  // peuplerBDavecForkJoin(): Observable<any> {
+  //   let appelsVersAddAssignment: Observable<any>[] = [];
+
+  //   bdInitialAssignments.forEach(a => {
+  //     const nouvelAssignment = new Assignment();
+  //     nouvelAssignment.id = a.id;
+  //     nouvelAssignment.nom = a.nom_devoir;
+  //     nouvelAssignment.dateDeRendu = new Date(a.dateDeRendu);
+  //     nouvelAssignment.rendu = a.rendu;
+  //     nouvelAssignment.auteur = a.auteur;
+  //     nouvelAssignment.remarques = a.remarques;
+  //     nouvelAssignment.note = a.note;
+  //     const randomElement = this.getRandomElement(bdInitialMatireres);
+  //     nouvelAssignment.nomMatiere = randomElement.nomMatiere;
+  //     nouvelAssignment.photoMatiere = randomElement.photoMatiere;
+  //     nouvelAssignment.photoProf = randomElement.photoProf;
+
+
+  //     appelsVersAddAssignment.push(this.addAssignments(nouvelAssignment));
+  //   });
+
+  //   return forkJoin(appelsVersAddAssignment);
+  // }
+  peuplerBDavecForkJoin(): Observable<any> {
+    return this.matiere.getMatieres().pipe(
+      switchMap(matieres => {
+        let appelsVersAddAssignment: Observable<any>[] = [];
+        bdInitialAssignments.forEach(a => {
+          const nouvelAssignment = new Assignment();
+          nouvelAssignment.id = a.id;
+          nouvelAssignment.nom = a.nom_devoir;
+          nouvelAssignment.dateDeRendu = new Date(a.dateDeRendu);
+          nouvelAssignment.rendu = a.rendu;
+          nouvelAssignment.auteur = a.auteur;
+          nouvelAssignment.remarques = a.remarques;
+          nouvelAssignment.note = a.note;  
+          const randomMatiere = this.getRandomElement(matieres);
+          nouvelAssignment.nomMatiere = randomMatiere.nomMatiere;
+          nouvelAssignment.photoMatiere = randomMatiere.photoMatiere;
+          nouvelAssignment.photoProf = randomMatiere.photoProf;
+  
+          appelsVersAddAssignment.push(this.addAssignments(nouvelAssignment));
+        });
+  
+        return forkJoin(appelsVersAddAssignment);
+      })
+    );
+  }
+  
+  
   getRandomElement(array: any[]):any{
     const randomIndex = Math.floor(Math.random() * array.length);
     return array[randomIndex]
