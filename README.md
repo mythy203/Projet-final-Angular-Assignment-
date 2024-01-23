@@ -37,7 +37,7 @@ Améliorer le TP sur les assignments.
 #### Fonctionnalités Optionnelles
 - [ ] Ajouter un filtre rendu/non rendu : selon que cette case est cochée ou non, le tableau affichera uniquement les assignments rendus ou non rendus.
 - [ ] Ajouter un champ de recherche sur le nom de l'assignment qui enverra une requête et affichera les résultats correspondants à la recherche.
-- [ ] Optionnel (mais simple à faire) : utiliser un formulaire de type Stepper pour l'ajout d'Assignments (éventuellement pour la modification).
+- [x] Optionnel (mais simple à faire) : utiliser un formulaire de type Stepper pour l'ajout d'Assignments (éventuellement pour la modification).
 
 ## Style et Navigation
 - [x] Rendre tout plus joli, essayer de ne pas tous faire la même chose. Une toolbar en haut, une sidebar sur le côté est recommandée.
