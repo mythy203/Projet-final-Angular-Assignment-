@@ -73,6 +73,7 @@ export class EditAssignmentComponent implements OnInit {
       this.assignment.remarques =  this.remarques;
     }
     if(this.rendu){
+      this.assignment.rendu =true;
       this.assignment.note = this.note || this.assignment.note;
       this.assignment.remarques = this.remarques || this.assignment.remarques;
     } else {
