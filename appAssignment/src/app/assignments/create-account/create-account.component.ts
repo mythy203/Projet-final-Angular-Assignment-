@@ -21,7 +21,9 @@ export class CreateAccountComponent {
     subscribe(
       (response) => {
         alert('Compte créé avec succès. Veuillez vous connecter.');
-        this.router.navigate(['/login']); 
+        this.router.navigate(['/login']).then(() => {
+          window.location.reload();
+        });
       },
       (error) => {
         alert('Erreur lors de la création du compte.');
@@ -29,4 +31,6 @@ export class CreateAccountComponent {
       }
     );
   }
+  
+  
 }

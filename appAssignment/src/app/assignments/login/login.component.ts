@@ -21,9 +21,11 @@ export class LoginComponent {
     // Pas besoin d'appeler setUserRole ici puisque login le fait déjà
     this.router.navigate(['home']);
   } else {
+    alert("Login unsuccessful")
     console.log("Login unsuccessful");
     // Gérez l'échec de la connexion ici
   }
+  
 }
 
 
