@@ -11,31 +11,28 @@ import { AuthService } from 'src/app/shared/auth.service';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  role:string = '';
   
   constructor(private authService: AuthService,
               private router:Router) {}
-  login() {
-  const role = this.authService.login(this.username, this.password);
-  console.log(role);
-  
-  
-    if (role) {
-    console.log(`Login successful. Role: ${role}`);
-    // Pas besoin d'appeler setUserRole ici puisque login le fait déjà
-    this.router.navigate(['home']);
-  } else {
-    alert("Login unsuccessful")
-    console.log("Login unsuccessful");
-    // Gérez l'échec de la connexion ici
-  }
-  
-}
+              login() {
+                this.authService.login(this.username, this.password).subscribe(
+                    (response) => {
+                        console.log(`Login successful. Role: ${response.role}`);
+                        this.router.navigate(['home']);
+                    },
+                    (error) => {
+                        alert("Login unsuccessful");
+                        console.log("Login unsuccessful", error);
+                    }
+                );
+              }
+              
 
 
 }
 
 
 //}
-
 
 
