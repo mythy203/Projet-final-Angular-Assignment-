@@ -1,23 +1,35 @@
 .form {
-    display:flex;
-    flex-direction:column;
-    margin:0px 50px 50px 50px;
-    padding:0px 100px 100px 100px;
+  display:flex;
+  flex-direction:column;
+  margin:0px 50px 50px 50px;
+  padding:0px 100px 100px 100px;
 
- }
- .matiere-image, .prof-image {
-    width: 24px; /* Ajustez la taille selon vos besoins */
-    height: 24px;
-    vertical-align: middle;
-    margin-right: 8px; /* Espace entre l'image et le texte */
-  }
-  
+}
+.matiere-image, .prof-image {
+  width: 24px; /* Ajustez la taille selon vos besoins */
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 8px; /* Espace entre l'image et le texte */
+}
 
-  .mat-stepper-horizontal {
-   margin-top: 8px;
- }
- 
- .mat-mdc-form-field {
-   margin-top: 16px;
- }
- 
+.retour-button:hover {
+  background-color:rgb(218, 168, 197) ;
+}
+
+.suivant-button:hover {
+  background-color:rgb(75, 107, 159) ;
+}
+
+.mat-stepper-vertical, .mat-stepper-horizontal {
+  display: block;
+  font-family: var(--mat-stepper-container-text-font);
+  background: var(--mat-stepper-container-color);
+  background: none;
+}
+
+.mat-mdc-form-field {
+ margin-top: 16px;
+}
+.flex-item{
+  padding-right: 15px;
+}

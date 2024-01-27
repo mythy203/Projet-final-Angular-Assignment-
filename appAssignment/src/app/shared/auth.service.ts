@@ -21,15 +21,15 @@ export class AuthService {
   // ];
   private users = [];
   constructor(private http: HttpClient) {
-    this.fetchUsers();
+    // this.fetchUsers();
     this.autoLogin();
   }
-  private fetchUsers() {
-    this.http.get<any[]>(this.userUrl).subscribe(
-      data => this.users = data,
-      error => console.log('Error fetching users:', error)
-    );
-  }
+  // private fetchUsers() {
+  //   this.http.get<any[]>(this.userUrl).subscribe(
+  //     data => this.users = data,
+  //     error => console.log('Error fetching users:', error)
+  //   );
+  // }
   
   // login(username: string, password: string): string | null {
   //   const user = this.users.find(u => u.username === username && u.password === password);

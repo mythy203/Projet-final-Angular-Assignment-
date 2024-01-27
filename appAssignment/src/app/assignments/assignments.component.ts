@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Matiere } from './matiere.model';
 import { bdInitialMatireres } from '../shared/matieres-data';
 import { Observable, of } from 'rxjs';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 
 @Component({
@@ -23,13 +24,12 @@ export class AssignmentsComponent implements OnInit {
   opened=false;
   assignementSelectionne!:Assignment;// assignementSelectionne:Assignment; (désactiver le mode strict = false tsconfig.json)
   formVisible =false;
-
   assignments!:MatTableDataSource<Assignment>;
   isPeuplementEnCours = false;
   searchText: string = '';
-  renduFilter: boolean=false;
-  filterAssignments: MatTableDataSource<Assignment> ;
-
+  filterRendu = false;
+  filterNonRendu = false;
+  showFilters: boolean = false;
   assignment: Assignment[] = [];
 
 
@@ -71,26 +71,46 @@ export class AssignmentsComponent implements OnInit {
       return data.nom.toLowerCase().includes(filter);
     };
   }
-  getAssignmentsPaginated(page: number, limit: number) {
-    this.assignmentService.getAssignmentsPagine(page, limit)
-      .subscribe(data => {
-      // Créez la source de données de table avec vos assignments
-      this.assignments = new MatTableDataSource(data.docs);
-      // Triez la table en utilisant le trieur
-      this.assignments.sort = this.sort;
-      this.sort.disableClear = true;
-      this.page = data.page;
-      this.limit = data.limit;
-      this.totalDocs = data.totalDocs;
-      this.totalPages = data.totalPages;
-      this.hasPrevPage = data.hasPrevPage;
-      this.prevPage = data.prevPage;
-      this.hasNextPage = data.hasNextPage;
-      this.nextPage = data.nextPage;
-      console.log("données reçues");
-      });
+  ngAfterViewInit(): void {
+    this.getAssignmentsPaginated(this.page, this.limit);
   }
 
+  getAssignmentsPaginated(page: number, limit: number) {
+    const filterParams = `&rendu=${this.filterRendu}&nonRendu=${this.filterNonRendu}`;
+
+    this.assignmentService.getAssignmentsPagine(page, limit)
+      .subscribe(data => {
+        const filteredAssignments = data.docs.filter(assignment => {
+          if (this.filterRendu && assignment.rendu) {
+            return true;
+          }
+          if (this.filterNonRendu && !assignment.rendu) {
+            return true;
+          }
+          if (!this.filterRendu && !this.filterNonRendu) {
+            return true;
+          }
+          return false;
+        });
+
+
+        this.assignments = new MatTableDataSource(filteredAssignments);
+        this.assignments.sort = this.sort;
+        this.sort.disableClear = true;
+
+
+        this.page = data.page;
+        this.limit = data.limit;
+        this.totalDocs = data.totalDocs;
+        this.totalPages = data.totalPages;
+        this.hasPrevPage = data.hasPrevPage;
+        this.prevPage = data.prevPage;
+        this.hasNextPage = data.hasNextPage;
+        this.nextPage = data.nextPage;
+
+        console.log("Données reçues");
+      });
+  }
 
   goToFirstPage() {
     if (this.page > 1) {
@@ -142,12 +162,10 @@ export class AssignmentsComponent implements OnInit {
         console.log("La base de données a été peuplée avec succès", response);
         this.isPeuplementEnCours = false;
         window.location.reload();
-        // ...
       },
       error: (err) => {
         console.error("Erreur lors du peuplement de la base de données", err);
         this.isPeuplementEnCours = false;
-        // ...
       }
     });
   }
@@ -155,7 +173,21 @@ export class AssignmentsComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
     this.assignments.filter = filterValue;
   }
+  toggleFilters() {
+    this.showFilters = !this.showFilters;
+  }
   
+  filterRenduChange(event: MatCheckboxChange) {
+    console.log('filterRenduChange', event.checked);
+    this.filterRendu = event.checked;
+    this.getAssignmentsPaginated(this.page, this.limit);
+  }
+
+  filterNonRenduChange(event: MatCheckboxChange) {
+    console.log('filterNonRenduChange', event.checked);
+    this.filterNonRendu = event.checked;
+    this.getAssignmentsPaginated(this.page, this.limit);
+  }
   
   
   

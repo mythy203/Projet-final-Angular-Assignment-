@@ -48,6 +48,12 @@ export class AppComponent {
     });
     this.router.navigate(['/home']);
   }
+  onAddAssignmentClick() {
+    if (this.authService.isLoggedIn() && this.isAdmin()) {
+      // Chỉ chuyển hướng nếu đã đăng nhập và có quyền
+      this.router.navigate(['/add-assignment']);
+    }
+  }
 //slider
  /* login(){
     if(this.authService.loggedIn){

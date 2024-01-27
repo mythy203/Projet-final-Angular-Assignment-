@@ -148,6 +148,12 @@ mat-sidenav{
   width: 50%;
   padding-top: 15px;
   margin: unset;
+  padding-right: 15px;
+}
+.filter-button {
+  display: flex;
+  align-items: center; 
+  color:black;
 }
 
 

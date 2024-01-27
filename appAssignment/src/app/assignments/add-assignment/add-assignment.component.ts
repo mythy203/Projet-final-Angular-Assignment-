@@ -15,6 +15,7 @@ import { MatSelectChange } from '@angular/material/select';
   styleUrls: ['./add-assignment.component.css']
 })
 export class AddAssignmentComponent implements OnInit {
+  isUserLoggedIn: boolean = false; 
   nouvelAssignement:Assignment;
   nomDevoir:string="";
   dateRendu: Date;
@@ -45,7 +46,7 @@ export class AddAssignmentComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    if(!this.authservice.isLoggedIn){
+    if(!this.authservice.isLoggedIn()){
       this.router.navigate(['/login']); 
     }
     else{

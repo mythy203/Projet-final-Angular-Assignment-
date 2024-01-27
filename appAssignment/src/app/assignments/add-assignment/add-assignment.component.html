@@ -11,7 +11,7 @@
         <input matInput placeholder="Nom du devoir" formControlName="nomDevoir" required>
       </mat-form-field>
       <div>
-        <button mat-button type="submit" (click)="stepper.next()" [disabled]="!firstFormGroup.valid">Suivant</button>
+        <button mat-button type="submit" (click)="stepper.next()" [disabled]="!firstFormGroup.valid" class="suivant-button">Suivant</button>
       </div>
     </form>
   </mat-step>
@@ -27,8 +27,8 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <div>
-        <button mat-button type="submit" [disabled]="!secondFormGroup.valid">Suivant</button>
-        <button mat-button matStepperPrevious>Retour</button>
+        <button mat-button matStepperPrevious class="retour-button">Retour</button>
+        <button mat-button type="submit" [disabled]="!secondFormGroup.valid" class="suivant-button">Suivant</button>
       </div>
     </form>
   </mat-step>
@@ -58,8 +58,8 @@
       </div>
 
       <div>
-        <button mat-button type="submit" [disabled]="!thirdFormGroup.valid">Suivant</button>
-        <button mat-button matStepperPrevious>Retour</button>
+        <button mat-button matStepperPrevious class="retour-button">Retour</button>
+        <button mat-button type="submit" [disabled]="!thirdFormGroup.valid" class="suivant-button">Suivant</button>
       </div>
     </form>
   </mat-step>
@@ -85,13 +85,8 @@
         (click)="submitAssignment();assignmentForm.reset() " >
           Ajouter un devoir
           </button>
-        <button mat-button matStepperPrevious>Retour</button>
+        <button mat-button matStepperPrevious class="retour-button">Retour</button>
       </div>
     </form>
   </mat-step>
 </mat-vertical-stepper>
- 
-
- 
- 
- 
