@@ -6,10 +6,10 @@
 
 }
 .matiere-image, .prof-image {
-  width: 24px; /* Ajustez la taille selon vos besoins */
+  width: 24px; 
   height: 24px;
   vertical-align: middle;
-  margin-right: 8px; /* Espace entre l'image et le texte */
+  margin-right: 8px; 
 }
 
 .retour-button:hover {

@@ -1,4 +1,4 @@
-import { Component,OnInit,/*Input*/ } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Assignment } from '../assignment.model';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,53 +10,51 @@ import { AuthService } from 'src/app/shared/auth.service';
   styleUrls: ['./assignment-detail.component.css']
 })
 export class AssignmentDetailComponent implements OnInit {
-  // @Input() 
-  assignmentTransmis:Assignment;
-  constructor(private assignmentService:AssignmentsService,
-              private route:ActivatedRoute,
-              private router:Router,
-              public authService:AuthService){}
+  assignmentTransmis: Assignment;
+  constructor(private assignmentService: AssignmentsService,
+    private route: ActivatedRoute,
+    private router: Router,
+    public authService: AuthService) { }
   ngOnInit(): void {
     //on récupère l'id passé dans l'url via l'objet snapshot
     //attenetion l'url étant composé de strings on utilisera
     //"+" pour forcer la conversion en number
     const id = +this.route.snapshot.params['id'];
     this.assignmentService.getAssignment(id)
-        .subscribe (a => this.assignmentTransmis = a);
+      .subscribe(a => this.assignmentTransmis = a);
   }
-  onAssignementRendu(){
+  onAssignementRendu() {
     if (this.assignmentTransmis) {
-      this.assignmentTransmis.rendu=true;
+      this.assignmentTransmis.rendu = true;
 
       this.assignmentService.updateAssignment(this.assignmentTransmis)
-      .subscribe((reponse) => {
-        console.log("Response du serveur: " + reponse.message);
-        this.router.navigate(["home"]);
-      });
-      //désactiver le mode strict = false tsconfig.json (=null sinon erreur)
+        .subscribe((reponse) => {
+          console.log("Response du serveur: " + reponse.message);
+          this.router.navigate(["home"]);
+        });
       this.assignmentTransmis = null;
     }
   }
-  onDelete(){
-    if(this.assignmentTransmis){
+  onDelete() {
+    if (this.assignmentTransmis) {
       this.assignmentService.deleteAssignment(this.assignmentTransmis)
-      .subscribe((reponse) => console.log("Réponse du serveur: " + reponse.message));
+        .subscribe((reponse) => console.log("Réponse du serveur: " + reponse.message));
       this.router.navigate(["home"]);
 
     }
-   
-      this.assignmentTransmis = null;
+
+    this.assignmentTransmis = null;
 
   }
 
-  onClickEdit(){
-    this.router.navigate(['/assignment', this.assignmentTransmis.id,'edit'],
-                       { queryParams:{'nom':this.assignmentTransmis.nom}, fragment:'edition'})
+  onClickEdit() {
+    this.router.navigate(['/assignment', this.assignmentTransmis.id, 'edit'],
+      { queryParams: { 'nom': this.assignmentTransmis.nom }, fragment: 'edition' })
   }
   isAdmin() {
-    if(this.authService.userRole==='admin'){
+    if (this.authService.userRole === 'admin') {
       return true;
     }
-   return false;
+    return false;
   }
 }

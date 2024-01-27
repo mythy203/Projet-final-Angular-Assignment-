@@ -1,55 +1,52 @@
 <mat-toolbar>
     <mat-toolbar-row>
-        <button mat-button (click)="opened=!opened" ><mat-icon>menu</mat-icon></button>
+        <button mat-button (click)="opened=!opened"><mat-icon>menu</mat-icon></button>
         <button mat-button routerLink="/home" style="margin-right: 10px;"><mat-icon>home</mat-icon> Home</button>
-        <button mat-button
-
-                (click)="peuplerBD()"
-                [disabled]="isPeuplementEnCours">
-                <mat-icon>backup</mat-icon>
-                Peupler la Base de Données
+        <button mat-button (click)="peuplerBD()" [disabled]="isPeuplementEnCours">
+            <mat-icon>backup</mat-icon>
+            Peupler la Base de Données
         </button>
         <span class="spacer"></span>
-        <!-- <mat-slide-toggle (click)="login()">Login</mat-slide-toggle> -->
-        <button *ngIf="!authService.isLoggedIn()"
-                mat-raised-button
-                color="accent"
-                routerLink="/login"
-                >
+        <button *ngIf="!authService.isLoggedIn()" mat-raised-button color="accent" routerLink="/login">
             <mat-icon>account_box</mat-icon>
-             Connexion
+            Connexion
         </button>
         <button *ngIf="authService.isLoggedIn()" mat-raised-button color="primary" class="user-button">
-          <mat-icon>account_circle</mat-icon>
-          {{ authService.loggedInUser }}
+            <mat-icon>account_circle</mat-icon>
+            {{ authService.loggedInUser }}
         </button>
         <!-- ajout deconnexion -->
         <button *ngIf="authService.isLoggedIn()" mat-raised-button color="accent" (click)="logout()">
             <mat-icon>exit_to_app</mat-icon>
             Déconnexion
-          </button>
+        </button>
     </mat-toolbar-row>
 </mat-toolbar>
 
 
 <mat-sidenav-container>
     <mat-sidenav [(opened)]="opened" mode="side">
-    <mat-list>
-        <mat-list-item class="sidenav-item"><a routerLink="/home" style="text-decoration: none;" > Liste des devoirs</a> </mat-list-item>
-        <mat-divider ></mat-divider>
-        <mat-list-item class="sidenav-item" [disabled]="!authService.isLoggedIn()" ><a  routerLink="/add-assignment" style="text-decoration: none;"> Ajout d'un devoir</a>  </mat-list-item>
-        <mat-divider ></mat-divider>
-        <mat-list-item class="sidenav-item" [disabled]="!authService.isLoggedIn()" ><a routerLink="/" style="text-decoration: none;"> Modification d'un devoir</a> </mat-list-item>
-        <mat-divider ></mat-divider>
-        <mat-list-item class="sidenav-item" [disabled]="!isAdmin()"><a routerLink="/" style="text-decoration: none;"> Suppression d'un devoir</a> </mat-list-item>
-        <mat-divider ></mat-divider>
-        <mat-list-item class="sidenav-item" [disabled]="!isAdmin()"><a routerLink="/" style="text-decoration: none;"> Génération de données de test</a> </mat-list-item>
-    </mat-list>
+        <mat-list>
+            <mat-list-item class="sidenav-item"><a routerLink="/home" style="text-decoration: none;"> Liste des
+                    devoirs</a> </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="sidenav-item" [disabled]="!authService.isLoggedIn()"><a routerLink="/add-assignment"
+                    style="text-decoration: none;"> Ajout d'un devoir</a> </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="sidenav-item" [disabled]="!authService.isLoggedIn()"><a routerLink="/"
+                    style="text-decoration: none;"> Modification d'un devoir</a> </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="sidenav-item" [disabled]="!isAdmin()"><a routerLink="/"
+                    style="text-decoration: none;"> Suppression d'un devoir</a> </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="sidenav-item" [disabled]="!isAdmin()"><a routerLink="/"
+                    style="text-decoration: none;"> Génération de données de test</a> </mat-list-item>
+        </mat-list>
 
     </mat-sidenav>
 
     <mat-sidenav-content>
-    <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
 
 </mat-sidenav-container>

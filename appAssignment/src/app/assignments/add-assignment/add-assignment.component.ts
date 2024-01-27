@@ -1,4 +1,4 @@
-import { Component,ChangeDetectorRef,/*EventEmitter*/OnInit, ViewChild,/* Output*/ } from '@angular/core';
+import { Component,ChangeDetectorRef,OnInit, ViewChild, } from '@angular/core';
 import { Assignment } from '../assignment.model';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Router } from '@angular/router';

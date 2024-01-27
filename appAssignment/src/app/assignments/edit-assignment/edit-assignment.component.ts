@@ -91,7 +91,6 @@ export class EditAssignmentComponent implements OnInit {
       this.assignmentService.updateAssignment(this.assignment)
         .subscribe(reponse => {
           console.log("Réponse du serveur" + reponse.message);
-         //retour à la page d'acceuil
           this.router.navigate(['home']);
   });
 
@@ -106,9 +105,7 @@ export class EditAssignmentComponent implements OnInit {
   }
   onRenduChange() {
     // Cette méthode est appelée chaque fois que la valeur de 'rendu' change.
-    this.changeDetector.detectChanges(); // Indique à Angular de vérifier les changements.
-
-    // Vous pourriez également vouloir réinitialiser les étapes ici si nécessaire.
+    this.changeDetector.detectChanges(); 
   }
 
 }

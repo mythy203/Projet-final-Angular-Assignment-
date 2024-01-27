@@ -12,11 +12,10 @@ export class CreateAccountComponent {
   newUser = {
           username: '',
           password: '',
-          role: 'user' // Valeur par défaut, pourrait être changée par des boutons radio ou un select
+          role: 'user' 
   };
   constructor(private userService: UserService,private router: Router) {}
   onCreateAccount() {
-    // Vous pouvez ajouter ici une logique pour déterminer le rôle basé sur les boutons radio
     this.userService.addUser(this.newUser).
     subscribe(
       (response) => {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Assignment } from '../assignments/assignment.model';
 import{Observable, catchError, of, tap,forkJoin, switchMap} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { bdInitialAssignments } from '../shared/assignments-data'; // Assurez-vous que le chemin est correct
+import { bdInitialAssignments } from '../shared/assignments-data'; 
 import { bdInitialMatireres } from './matieres-data';
 import { Matiere } from '../assignments/matiere.model';
 import { MatiereService } from './matiere.service';
@@ -41,7 +41,7 @@ export class AssignmentsService {
   }
   private handleError<T>(operation: any, result?: T) {
     return (error: any): Observable<T> => {
-      console.log(error); // pour afficher dans la console
+      console.log(error); 
       console.log(operation + ' a échoué ' + error.message);
  
       return of(result as T);
@@ -64,29 +64,6 @@ export class AssignmentsService {
     return this.http.get<Assignment[]>(`${this.url}?rendu=${rendu}`);
   }
 
-  // peuplerBDavecForkJoin(): Observable<any> {
-  //   let appelsVersAddAssignment: Observable<any>[] = [];
-
-  //   bdInitialAssignments.forEach(a => {
-  //     const nouvelAssignment = new Assignment();
-  //     nouvelAssignment.id = a.id;
-  //     nouvelAssignment.nom = a.nom_devoir;
-  //     nouvelAssignment.dateDeRendu = new Date(a.dateDeRendu);
-  //     nouvelAssignment.rendu = a.rendu;
-  //     nouvelAssignment.auteur = a.auteur;
-  //     nouvelAssignment.remarques = a.remarques;
-  //     nouvelAssignment.note = a.note;
-  //     const randomElement = this.getRandomElement(bdInitialMatireres);
-  //     nouvelAssignment.nomMatiere = randomElement.nomMatiere;
-  //     nouvelAssignment.photoMatiere = randomElement.photoMatiere;
-  //     nouvelAssignment.photoProf = randomElement.photoProf;
-
-
-  //     appelsVersAddAssignment.push(this.addAssignments(nouvelAssignment));
-  //   });
-
-  //   return forkJoin(appelsVersAddAssignment);
-  // }
   peuplerBDavecForkJoin(): Observable<any> {
     return this.matiere.getMatieres().pipe(
       switchMap(matieres => {

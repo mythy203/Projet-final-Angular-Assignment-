@@ -140,7 +140,6 @@ export class AssignmentsComponent implements OnInit {
     }
   }
 
-  // ...
 
   handlePageEvent(event: PageEvent) {
     this.page = event.pageIndex + 1;
@@ -149,12 +148,6 @@ export class AssignmentsComponent implements OnInit {
   }
 
 
-  // getAssignments(){
-  //   this.assignmentService.getAssignments()
-  //   .subscribe(assignments => {
-  //     // this.assignments =assignments;
-  //   })
-  // }
   peuplerBD() {
     this.isPeuplementEnCours = true;
     this.assignmentService.peuplerBDavecForkJoin().subscribe({

@@ -5,7 +5,7 @@ export class Assignment {
     nom:string;
     dateDeRendu: Date;
     rendu: boolean;
-    auteur: string; //nom de l'élève
+    auteur: string; 
     nomMatiere: string;
     photoMatiere:string;
     photoProf:string;
