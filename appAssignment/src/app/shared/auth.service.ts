@@ -29,7 +29,7 @@ login(username: string, password: string): Observable<any> {
         localStorage.setItem('role', response.role);
 
         // token (ex: 24 h), test 5 min
-        const expirationTime = new Date().getTime() + 5*1000; // 24 h
+        const expirationTime = new Date().getTime() + (24 * 60 * 60 * 1000); // 24 h
         localStorage.setItem('tokenExpiration', expirationTime.toString());
 
         this.userRole = response.role;
