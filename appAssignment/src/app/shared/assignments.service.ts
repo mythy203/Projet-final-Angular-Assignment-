@@ -60,6 +60,10 @@ export class AssignmentsService {
       this.listeMatiere = matieres;
     });
   }
+  getAssignmentsByRenduStatus(rendu: boolean): Observable<Assignment[]> {
+    return this.http.get<Assignment[]>(`${this.url}?rendu=${rendu}`);
+  }
+
   // peuplerBDavecForkJoin(): Observable<any> {
   //   let appelsVersAddAssignment: Observable<any>[] = [];
 

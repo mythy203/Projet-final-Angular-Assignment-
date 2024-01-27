@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable, catchError, of, tap } from 'rxjs';
 
 
 @Injectable({
@@ -25,7 +26,7 @@ export class AuthService {
       error => console.log('Error fetching users:', error)
     );
   }
-
+  
   login(username: string, password: string): string | null {
     const user = this.users.find(u => u.username === username && u.password === password);
     if (user) {

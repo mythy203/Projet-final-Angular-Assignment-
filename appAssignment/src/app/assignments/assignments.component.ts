@@ -30,6 +30,7 @@ export class AssignmentsComponent implements OnInit {
   renduFilter: boolean=false;
   filterAssignments: MatTableDataSource<Assignment> ;
 
+  assignment: Assignment[] = [];
 
 
   listeMatiere:Matiere[];
@@ -153,6 +154,20 @@ export class AssignmentsComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
     this.assignments.filter = filterValue;
   }
+  loadAssignments(rendu: boolean) {
+    this.assignmentService.getAssignmentsByRenduStatus(rendu).subscribe(
+      (data) => {
+        console.log("Assignments reçus:", data); // Ajoutez ce log pour inspecter les données
+        this.assignments = new MatTableDataSource(data);
+        this.assignments.sort = this.sort;
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des assignments', error);
+      }
+    );
+  }
+  
+  
   
  
 

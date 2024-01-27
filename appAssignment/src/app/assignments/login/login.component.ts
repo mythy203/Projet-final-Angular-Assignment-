@@ -16,6 +16,9 @@ export class LoginComponent {
               private router:Router) {}
   login() {
   const role = this.authService.login(this.username, this.password);
+  console.log(role);
+  
+  
     if (role) {
     console.log(`Login successful. Role: ${role}`);
     // Pas besoin d'appeler setUserRole ici puisque login le fait déjà
