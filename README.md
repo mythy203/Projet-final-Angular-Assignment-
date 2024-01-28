@@ -1,8 +1,8 @@
 # Angular: Projet Final
 
 ## Groupe
-- TRINH Thi Thanh Thuy
-- Dao Tuan Linh
+- TRINH Thi Thanh Thuy (@mythy203)
+- Dao Tuan Linh (@Linhkobe)
  
 ## Lien vers l'application (Heroku)
 
@@ -34,6 +34,14 @@ Améliorer le TP sur les assignments.
    + Admin : en tant qu'un "Admin", il est possible de consulter les devoirs, ajouter, modifier, supprimer un devoir.
 3) Vous pouvez faire les opérations sur les devoirs par la connexion à chaque genre de compte ("User", "Admin").
 
+** Lorsque vous souhaitez vous connecter mais que vous ne voulez pas perdre de temps à créer un compte, vous pouvez utiliser le compte suivant:
+   + administrateur:
+           - username:admin
+           - password:123         
+   + utilisateur:
+           - username:user
+           - password:123   
+
 ## Tâches
 ### Facile avec Options Avancées
 - [x] Au moins 1000 assignments dans la base de données.
@@ -44,7 +52,7 @@ Améliorer le TP sur les assignments.
 
 #### Avancé
 - [x] Meilleur cas (mais plus de travail sur le backend) : créer une collection Utilisateurs dans MongoDB et valider que le user/password est correct.
-- [x] Avancé++ : Regarder comment utiliser l'authentification avec des Json Web Tokens (JWT), en suivant un tutoriel.
+- [x] Avancé++ :  l'authentification avec des Json Web Tokens (JWT), cryptage de mot de passe. Pour assurer la sécurité et la validité des session, nous avons mis en place un délai d'expiration des stocken de 24h. Il s'agit que l'utilisateur reste connecté même quand il ouvre un nouvel onglet du navigateur ou rafraichit la page.La session expire apres un jours ou l'utilisateurs choisissent de se déconnecter manuellement.
 
 - [x] Ajouter de nouvelles propriétés au modèle des Assignments.
   - [x] Ajouter auteur (nom de l'élève), matière (Base de données, Technologies Web, Grails, etc.), et associer une image à chaque matière et une photo du professeur.
@@ -53,7 +61,7 @@ Améliorer le TP sur les assignments.
 
 #### Approches
 - [x] Approche Facile : Ajouter des propriétés au modèle des Assignments (dans le frontend et dans le backend). C'est recommandé pour la plupart.
-- [x] Approche Avancée : Ajouter une collection "matières" et/ou "élèves", impactant plus le backend, c'est une solution optionnelle pour les meilleurs parmi vous. on a fait la collection matieres
+- [x] Approche Avancée : Ajouter une collection "matières" et/ou "élèves" sur MongoDB, impactant plus le backend, c'est une solution optionnelle pour les meilleurs parmi vous. on a fait la collection matieres
 
 - [x] Améliorer l'affichage des Assignments.
   - [x] Afficher les assignments dans une table Angular Material, avec tri, lignes d'en-têtes fixes, et pagination.
