@@ -8,6 +8,10 @@
 
 https://frontprojet-angular-assignment-23faecb32dc9.herokuapp.com/  
 
+## La démo de notre application 
+
+https://www.youtube.com/watch?v=ritAMcEoI84 
+
 ## Tester manuellement
 Repository github du projet:
    + front-end : https://github.com/mythy203/Projet-final-Angular-Assignment-.git
