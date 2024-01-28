@@ -8,7 +8,9 @@ import { Matiere } from '../assignments/matiere.model';
 export class MatiereService {
 
   constructor(private http:HttpClient) { }
-  url = "http://localhost:8010/api/matieres"
+  //heroku
+  // url = "http://localhost:8010/api/matieres"
+  url = "https://api-cours-angular2023-6bb9d00082cc.herokuapp.com/api/matieres";
   getMatieres():Observable<Matiere[]>{
     return this.http.get<Matiere[]>(this.url);
     

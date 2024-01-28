@@ -11,23 +11,23 @@ import { AuthService } from 'src/app/shared/auth.service';
 export class LoginComponent {
   username: string = '';
   password: string = '';
-  role:string = '';
-  
+  role: string = '';
+
   constructor(private authService: AuthService,
-              private router:Router) {}
-              login() {
-                this.authService.login(this.username, this.password).subscribe(
-                    (response) => {
-                        console.log(`Login successful. Role: ${response.role}`);
-                        this.router.navigate(['home']);
-                    },
-                    (error) => {
-                        alert("Login unsuccessful");
-                        console.log("Login unsuccessful", error);
-                    }
-                );
-              }
-              
+    private router: Router) { }
+  login() {
+    this.authService.login(this.username, this.password).subscribe(
+      (response) => {
+        console.log(`Login successful. Role: ${response.role}`);
+        this.router.navigate(['home']);
+      },
+      (error) => {
+        alert("Login unsuccessful");
+        console.log("Login unsuccessful", error);
+      }
+    );
+  }
+
 
 
 }

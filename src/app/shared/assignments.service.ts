@@ -18,8 +18,8 @@ export class AssignmentsService {
               private matiere:MatiereService ) { }
   assignments:Assignment[] =[];
   //url de Heroku
-  // url = "https://api-cours-angular2023-6bb9d00082cc.herokuapp.com/api/assignments"
-  url = "http://localhost:8010/api/assignments"
+  url = "https://api-cours-angular2023-6bb9d00082cc.herokuapp.com/api/assignments"
+  // url = "http://localhost:8010/api/assignments"
 
   getAssignments():Observable<Assignment[]>{
     return this.http.get<Assignment[]>(this.url);

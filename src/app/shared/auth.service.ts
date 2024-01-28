@@ -7,7 +7,9 @@ import { Observable, catchError, of, tap, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private userUrl = 'http://localhost:8010/api/users';
+  //heroku
+  // private userUrl = 'http://localhost:8010/api/users';
+  private userUrl = 'https://api-cours-angular2023-6bb9d00082cc.herokuapp.com/api/users';
   private isAuthenticated = false; 
   userRole: string | null = null;
   loggedInUser: string | null = null;

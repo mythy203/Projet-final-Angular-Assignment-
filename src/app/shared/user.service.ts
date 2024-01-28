@@ -7,7 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8010/api/users';
+  //heroku
+  // private apiUrl = 'http://localhost:8010/api/users';
+  private apiUrl = 'https://api-cours-angular2023-6bb9d00082cc.herokuapp.com/api/users';
 
   constructor(private http: HttpClient) { }
 
