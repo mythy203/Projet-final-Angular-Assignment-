@@ -1,0 +1,92 @@
+<mat-vertical-stepper [linear]="isLinear" #assignmentForm>
+  <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+  </button>
+  <!-- Step 1 -->
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup" (ngSubmit)="onNext(1)">
+      <ng-template matStepLabel>Nom du devoir</ng-template>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Nom du devoir" formControlName="nomDevoir" required>
+      </mat-form-field>
+      <div>
+        <button mat-button type="submit" (click)="stepper.next()" [disabled]="!firstFormGroup.valid" class="suivant-button">Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- Step 2 -->
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup" (ngSubmit)="onNext(2)">
+      <ng-template matStepLabel>Date de rendu</ng-template>
+      <mat-form-field>
+        <mat-label>Date de rendu</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateRendu" placeholder="Date de rendu" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious class="retour-button">Retour</button>
+        <button mat-button type="submit" [disabled]="!secondFormGroup.valid" class="suivant-button">Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- Step 3 -->
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup" (ngSubmit)="onNext(3)">
+      <ng-template matStepLabel>Matière et étudiant</ng-template>
+
+      <div class="flex-container">
+        <mat-form-field class="flex-item">
+          <mat-label>Matière</mat-label>
+          <mat-select (selectionChange)="onMatiereSelecte($event)" formControlName="nomMatiere" placeholder="Sélectionner une matière" required>
+            <mat-option *ngFor="let matiere of matieres" [value]="matiere.nomMatiere">
+              {{ matiere.nomMatiere }}
+              <img [src]="matiere.photoMatiere" alt="Image de la matière" class="matiere-image">
+              <img [src]="matiere.photoProf" alt="Photo du prof" class="prof-image">
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="flex-item">
+          <mat-label>Nom d'étudiant</mat-label>
+          <input matInput placeholder="Nom d'étudiant" formControlName="auteur">
+        </mat-form-field>
+
+      </div>
+
+      <div>
+        <button mat-button matStepperPrevious class="retour-button">Retour</button>
+        <button mat-button type="submit" [disabled]="!thirdFormGroup.valid" class="suivant-button">Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <!-- Step 4 -->
+  <mat-step [stepControl]="renduFormGroup">
+    <form [formGroup]="renduFormGroup" (ngSubmit)="submitAssignment(); stepper.reset()">
+      <ng-template matStepLabel>Devoir rendu</ng-template>
+      <mat-checkbox formControlName="rendu">Devoir rendu</mat-checkbox>
+      <div *ngIf="renduFormGroup.get('rendu').value">
+        <mat-form-field class="flex-item">
+          <input matInput placeholder="Note" formControlName="note" required>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <input matInput placeholder="Remarques" formControlName="remarques" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <button type="button"
+        mat-stroked-button
+        color="primary"
+        (click)="submitAssignment();assignmentForm.reset() " >
+          Ajouter un devoir
+          </button>
+        <button mat-button matStepperPrevious class="retour-button">Retour</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-vertical-stepper>
