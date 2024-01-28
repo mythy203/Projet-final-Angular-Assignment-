@@ -6,6 +6,12 @@
  
 ## Lien vers l'application (Heroku)
 
+https://frontprojet-angular-assignment-23faecb32dc9.herokuapp.com/  
+
+Repository github du projet:
+   + front-end : https://github.com/mythy203/Projet-final-Angular-Assignment-.git
+   + back-end : https://github.com/mythy203/Backend_Projet_Angular_Assignment.git
+
 ## Objectif
 Améliorer le TP sur les assignments.
 
@@ -54,7 +60,7 @@ Améliorer le TP sur les assignments.
 - [x] Rendre tout plus joli, essayer de ne pas tous faire la même chose. Une toolbar en haut, une sidebar sur le côté est recommandée.
 
 ## Hébergement
-- [ ] Hébergement sur Heroku.com ou render.com.
+- [x] Hébergement sur Heroku.com ou render.com.
 
 ## Fonctionnalités Ouvertes
 - [ ] (Facile) Ajout de messages de notification (SnackBar Material).
