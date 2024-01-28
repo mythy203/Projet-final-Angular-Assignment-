@@ -8,9 +8,17 @@
 
 https://frontprojet-angular-assignment-23faecb32dc9.herokuapp.com/  
 
+## Tester manuellement
 Repository github du projet:
    + front-end : https://github.com/mythy203/Projet-final-Angular-Assignment-.git
    + back-end : https://github.com/mythy203/Backend_Projet_Angular_Assignment.git
+     
+Pour exécuter l'application, exécutez la commande suivante :
+   + Étape 1: git clone https://github.com/mythy203/Projet-final-Angular-Assignment-.git
+   + Étape 2: npm install ou npm i
+   + Étape 3: npm run build -> cela doit faire npm install puis ça doit créer le dossier dist avec l’application dedans
+   + Étape 4: npm run start
+   + Étape 5: Ouvrir http://localhost:8081 ->L’appli se lance dans votre navigateur.
 
 ## Objectif
 Améliorer le TP sur les assignments.
