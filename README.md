@@ -34,13 +34,15 @@ Améliorer le TP sur les assignments.
    + Admin : en tant qu'un "Admin", il est possible de consulter les devoirs, ajouter, modifier, supprimer un devoir.
 3) Vous pouvez faire les opérations sur les devoirs par la connexion à chaque genre de compte ("User", "Admin").
 
-** Lorsque vous souhaitez vous connecter mais que vous ne voulez pas perdre de temps à créer un compte, vous pouvez utiliser le compte suivant:**
-   + administrateur:
-           + username:admin
-           + password:123         
-   + utilisateur:
-           + username:user
-           + password:123   
+**Lorsque vous souhaitez vous connecter mais que vous ne voulez pas perdre de temps à créer un compte, vous pouvez utiliser le compte suivant:**
+
+- administrateur:
+  - username: admin
+  - password: 123
+- utilisateur:
+  - username: user
+  - password: 123
+ 
 
 ## Tâches
 ### Facile avec Options Avancées
